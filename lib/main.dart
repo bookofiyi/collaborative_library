@@ -1,3 +1,4 @@
+import 'package:collab_library/sign_in.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,10 +15,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        fontFamily: 'San Francisco',
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const SignIn(),
     );
   }
 }
