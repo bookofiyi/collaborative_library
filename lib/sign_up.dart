@@ -12,6 +12,54 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   String emailAddress = '';
   String password = '';
+  String name = '';
+  String? selectedValue = 'Pick a Faculty';
+  List<DropdownMenuItem<String>> facultyList = [
+    const DropdownMenuItem(
+      value: 'Pick a Faculty',
+      child: Text('Pick a Faculty'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Technology'),
+    ),
+    const DropdownMenuItem(
+      value: 'science',
+      child: Text('Faculty of Administration'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Agriculture'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Arts'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Education'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Environmental Design & Management'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Basic Medical Sciences'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Clinical Sciences'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Dentistry'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Law'),
+    ),
+  ];
 
   void showInSnackBar(context, String value) {
     final snackBar = SnackBar(
@@ -34,7 +82,7 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Sign In',
+          'Sign Up',
           style: TextStyle(
             color: kwhite,
           ),
@@ -51,6 +99,41 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // Name Field
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: kLightGrey,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: TextFormField(
+                          style: const TextStyle(
+                            fontSize: 20,
+                          ),
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.all(10.0),
+                            labelText: "Name",
+                            labelStyle: TextStyle(
+                              color: kblack,
+                            ),
+                            floatingLabelStyle: TextStyle(
+                              color: kblack,
+                            ),
+                            border: InputBorder.none,
+                          ),
+                          onChanged: (value) {
+                            name = value;
+                          },
+                        ),
+                      ),
+                    ),
+                    // End of Name Field
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+
                     // Email Address Field
                     Container(
                       decoration: const BoxDecoration(
@@ -119,6 +202,31 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     // End of Password Field
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+
+                    // Faculty Field
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: kLightGrey,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: DropdownButton(
+                          items: facultyList,
+                          value: selectedValue,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedValue = value;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    // End of Faculty Field
                   ],
                 ),
               ),
