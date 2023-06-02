@@ -1,7 +1,14 @@
 import 'package:collab_library/constants.dart';
+import 'package:collab_library/logic/colors.dart';
+import 'package:collab_library/logic/font_family.dart';
+import 'package:collab_library/logic/size_config.dart';
+import 'package:collab_library/widget/customWIdgets.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class SignIn extends StatefulWidget {
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   const SignIn({super.key});
 
   @override
@@ -11,6 +18,9 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   String emailAddress = '';
   String password = '';
+  final loginemailController = TextEditingController();
+  final loginpasswordController = TextEditingController();
+  bool isHiddenPassword = true;
 
   void showInSnackBar(context, String value) {
     final snackBar = SnackBar(
@@ -30,122 +40,107 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Sign In',
-          style: TextStyle(
-            color: kwhite,
-          ),
+      backgroundColor: AppColor.kwhiteColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 30,
         ),
-        backgroundColor: kred,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+        child: Form(
+            key: SignIn._formKey,
+            child: Column(
+              children: [
+                Gap(Get.height * .2),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/logo.png'),
+                        colorFilter: ColorFilter.mode(
+                          AppColor.primaryColor,
+                          BlendMode.color,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                customTitleText(
+                  'User Login',
+                  size: 16,
+                  textAlign: TextAlign.center,
+                  colors: AppColor.normaltextColor,
+                ),
+                customDescriptionText(
+                  'Login to continue',
+                  fontSize: 12,
+                  textAlign: TextAlign.center,
+                  colors: AppColor.normaltextColor,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Column(
                   children: [
-                    // Email Address Field
-                    Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: kLightGrey,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: TextFormField(
-                          style: const TextStyle(
-                            fontSize: 20,
-                          ),
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.all(10.0),
-                            labelText: "School Email Address",
-                            labelStyle: TextStyle(
-                              color: kblack,
-                            ),
-                            floatingLabelStyle: TextStyle(
-                              color: kblack,
-                            ),
-                            border: InputBorder.none,
-                          ),
-                          onChanged: (value) {
-                            emailAddress = value;
-                          },
+                    TextFormField(
+                      cursorColor: AppColor.primaryColor,
+                      controller: loginemailController,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        filled: true,
+                        focusColor: AppColor.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
                         ),
-                      ),
-                    ),
-                    // End of Email Addresss Field
-
-                    const SizedBox(
-                      height: 20,
-                    ),
-
-                    // Password Field
-                    Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: kLightGrey,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: TextFormField(
-                          style: const TextStyle(
-                            fontSize: 20,
-                          ),
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.all(10.0),
-                            labelText: "Password",
-                            labelStyle: TextStyle(
-                              color: kblack,
-                            ),
-                            floatingLabelStyle: TextStyle(
-                              color: kblack,
-                            ),
-                            border: InputBorder.none,
-                          ),
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          onChanged: (value) {
-                            password = value;
-                          },
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
                         ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            (15),
+                          ),
+                          borderSide: const BorderSide(
+                            color: AppColor.primaryColor,
+                            width: (1),
+                          ),
+                        ),
+                        suffixIcon: const Icon(
+                          Icons.email_outlined,
+                          color: AppColor.primaryColor,
+                        ),
+                        labelText: 'Email address',
+                        labelStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                        hintText: 'Email address',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
                       ),
                     ),
-                    // End of Password Field
                   ],
                 ),
-              ),
-            ),
-          ),
-          Center(
-            child: MaterialButton(
-              onPressed: () {
-                // if (emailAddress.endsWith('student.oauife.edu.ng')) {
-                // } else {
-                //   showInSnackBar(
-                //       context, 'Please use your school email to register');
-                // }
-              },
-              minWidth: double.infinity,
-              height: 70,
-              elevation: 3,
-              color: kred,
-              child: const Text(
-                'Sign In',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: kwhite,
-                ),
-              ),
-            ),
-          ),
-        ],
+              ],
+            )),
       ),
     );
   }

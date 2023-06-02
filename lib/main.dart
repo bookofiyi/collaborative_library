@@ -1,5 +1,5 @@
-// import 'package:collab_library/sign_in.dart';
-import 'package:collab_library/sign_up.dart';
+import 'package:collab_library/sign_in.dart';
+// import 'package:collab_library/sign_up.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'San Francisco',
       ),
-      home: const SignUp(),
+      home: const SignIn(),
     );
   }
 }
