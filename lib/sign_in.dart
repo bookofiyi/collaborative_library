@@ -69,6 +69,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 customTitleText(
                   'User Login',
+                  spacing: 0,
                   size: 16,
                   textAlign: TextAlign.center,
                   colors: AppColor.normaltextColor,
