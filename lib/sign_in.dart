@@ -52,22 +52,22 @@ class _SignInState extends State<SignIn> {
             child: Column(
               children: [
                 Gap(Get.height * .2),
-                Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    height: 100,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/logo.png'),
-                        colorFilter: ColorFilter.mode(
-                          AppColor.primaryColor,
-                          BlendMode.color,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.center,
+                //   child: Container(
+                //     height: 100,
+                //     decoration: const BoxDecoration(
+                //       shape: BoxShape.rectangle,
+                //       image: DecorationImage(
+                //         image: AssetImage('assets/images/logo.png'),
+                //         colorFilter: ColorFilter.mode(
+                //           AppColor.primaryColor,
+                //           BlendMode.color,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -136,12 +136,193 @@ class _SignInState extends State<SignIn> {
                                 fontFamily: FontFamily.sfRegular,
                                 fontSize: 14),
                       ),
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'Enter your email address';
+                        }
+                        return null;
+                      },
+                    ),
+                    const Gap(15),
+                    TextFormField(
+                      cursorColor: AppColor.primaryColor,
+                      // controller: controller.loginpasswordController,
+                      controller: loginpasswordController,
+                      keyboardType: TextInputType.name,
+                      textInputAction: TextInputAction.done,
+                      obscureText: isHiddenPassword,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        filled: true,
+                        focusColor: AppColor.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            (15),
+                          ),
+                          borderSide: const BorderSide(
+                            color: AppColor.primaryColor,
+                            width: (1),
+                          ),
+                        ),
+                        suffixIcon: InkWell(
+                          onTap: _togglePasswordView,
+                          child: Icon(
+                            isHiddenPassword
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: isHiddenPassword
+                                ? AppColor.primaryColor
+                                : AppColor.inputtextColor.withOpacity(0.5),
+                          ),
+                        ),
+                        labelText: 'Password',
+                        labelStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                        hintText: 'Password',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                      ),
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'Enter your account password';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          customDescriptionText(
+                            "Forgot password ?",
+                            onTap: () {
+                              // Get.to(() => const ForgetPassword());
+                            },
+                            textAlign: TextAlign.center,
+                            colors: AppColor.normaltextColor,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+
+                InkWell(
+                  onTap: () {
+                    // if (LoginScreen._formKey.currentState!.validate()) {
+                    //   if (controller.status != Status.isLoading) {
+                    //     controller.logIn(
+                    //       email: loginemailController.text.trim(),
+                    //       password: loginpasswordController.text.trim(),
+                    //     );
+                    //   }
+                    // }
+                    // Get.to(() => UserNavScreen());
+                  },
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: AppColor.primaryColor,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          blurRadius: 10,
+                          offset: Offset(0, 0),
+                          color: Color(0xffe2e5ed),
+                          spreadRadius: 5,
+                        ),
+                        BoxShadow(
+                          blurRadius: 15,
+                          offset: Offset(0, 2),
+                          color: Color(0xFF5B9BFF),
+                          spreadRadius: -5,
+                        ),
+                        BoxShadow(
+                          blurRadius: 20,
+                          offset: Offset(10, 0),
+                          color: Color(0xff5B9BFF),
+                          spreadRadius: -5,
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Log in",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 5,
+                ),
+
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      customDescriptionText(
+                        "Don't have an account?",
+                        onTap: () {},
+                        textAlign: TextAlign.center,
+                        colors: AppColor.normaltextColor,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      customDescriptionText(
+                        "Sign up",
+                        onTap: () {
+                          // Get.offAll(() => const SignUpScreen());
+                        },
+                        textAlign: TextAlign.center,
+                        colors: AppColor.primaryColor,
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      )
+                    ],
+                  ),
                 ),
               ],
             )),
       ),
     );
+  }
+
+  void _togglePasswordView() {
+    setState(() {
+      isHiddenPassword = !isHiddenPassword;
+    });
   }
 }
