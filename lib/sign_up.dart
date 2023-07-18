@@ -157,6 +157,13 @@ class _SignUpState extends State<SignUp> {
                             ),
                             border: InputBorder.none,
                           ),
+                          validator: (String? value) {
+                            if (value!.endsWith('@student.oauife.edu.ng')) {
+                              return null;
+                            } else {
+                              return 'Please register with your student email';
+                            }
+                          },
                           onChanged: (value) {
                             emailAddress = value;
                           },
