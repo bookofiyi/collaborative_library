@@ -52,22 +52,18 @@ class _SignInState extends State<SignIn> {
             child: Column(
               children: [
                 Gap(Get.height * .2),
-                // Align(
-                //   alignment: Alignment.center,
-                //   child: Container(
-                //     height: 100,
-                //     decoration: const BoxDecoration(
-                //       shape: BoxShape.rectangle,
-                //       image: DecorationImage(
-                //         image: AssetImage('assets/images/logo.png'),
-                //         colorFilter: ColorFilter.mode(
-                //           AppColor.primaryColor,
-                //           BlendMode.color,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/user.png'),
+                      ),
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -231,7 +227,6 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(
                   height: 40,
                 ),
-
                 InkWell(
                   onTap: () {
                     // if (LoginScreen._formKey.currentState!.validate()) {
@@ -282,11 +277,9 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-
                 const SizedBox(
                   height: 5,
                 ),
-
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
