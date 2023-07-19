@@ -19,6 +19,10 @@ class _SignUpState extends State<SignUp> {
   final lNameController = TextEditingController();
   final signupusernameController = TextEditingController();
   final signupemailController = TextEditingController();
+  final signupPasswordController = TextEditingController();
+
+  bool isHiddenPassword = true;
+  String message = '';
 
   @override
   Widget build(BuildContext context) {
@@ -286,6 +290,77 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                     ),
+                    Center(
+                      child: customDescriptionText(
+                        message,
+                        fontSize: 12,
+                        colors: AppColor.primaryColor,
+                      ),
+                    ),
+                    TextFormField(
+                      cursorColor: AppColor.primaryColor,
+                      // controller: controller.signupPasswordController,
+                      controller: signupPasswordController,
+                      keyboardType: TextInputType.name,
+                      textInputAction: TextInputAction.done,
+                      obscureText: isHiddenPassword,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        filled: true,
+                        focusColor: AppColor.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            15,
+                          ),
+                          borderSide: const BorderSide(
+                            color: AppColor.primaryColor,
+                            width: 1,
+                          ),
+                        ),
+                        suffixIcon: InkWell(
+                          onTap: _togglePasswordView,
+                          child: Icon(
+                            isHiddenPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: isHiddenPassword
+                                ? AppColor.primaryColor
+                                : AppColor.inputtextColor.withOpacity(0.5),
+                          ),
+                        ),
+                        labelText: 'Password',
+                        labelStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                        hintText: 'Password',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                      ),
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'Enter your password "8 Characters Minimum"';
+                        }
+                        return null;
+                      },
+                    ),
                   ],
                 )
               ],
@@ -294,5 +369,11 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  void _togglePasswordView() {
+    setState(() {
+      isHiddenPassword = !isHiddenPassword;
+    });
   }
 }
