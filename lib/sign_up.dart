@@ -17,6 +17,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final fNameController = TextEditingController();
   final lNameController = TextEditingController();
+  final signupusernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +163,57 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                     ),
+                    const Gap(15),
+                    TextFormField(
+                      cursorColor: AppColor.primaryColor,
+                      controller: signupusernameController,
+                      keyboardType: TextInputType.name,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        filled: true,
+                        focusColor: AppColor.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: AppColor.primaryColor,
+                            width: 1,
+                          ),
+                        ),
+                        labelText: 'Username',
+                        labelStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                        hintText: 'Enter username',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                      ),
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'Enter your username "6 Characters minimum"';
+                        }
+                        return null;
+                      },
+                    ),
+                    const Gap(15),
                   ],
                 )
               ],
