@@ -24,6 +24,54 @@ class _SignUpState extends State<SignUp> {
   bool isHiddenPassword = true;
   String message = '';
 
+  String? selectedValue = 'Pick a Faculty';
+  List<DropdownMenuItem<String>> facultyList = [
+    const DropdownMenuItem(
+      value: 'Pick a Faculty',
+      child: Text('Pick a Faculty'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Technology'),
+    ),
+    const DropdownMenuItem(
+      value: 'science',
+      child: Text('Faculty of Administration'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Agriculture'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Arts'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Education'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Environmental Design & Management'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Basic Medical Sciences'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Clinical Sciences'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Dentistry'),
+    ),
+    const DropdownMenuItem(
+      value: 'tech',
+      child: Text('Faculty of Law'),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -361,6 +409,38 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                     ),
+                    const Gap(15),
+                    DropdownButtonFormField(
+                        items: facultyList,
+                        value: selectedValue,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          fillColor: Colors.grey[500]!.withOpacity(0.2),
+                          filled: true,
+                          focusColor: AppColor.primaryColor,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            ),
+                            borderSide: const BorderSide(
+                              color: AppColor.primaryColor,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedValue = value;
+                          });
+                        }),
                     const SizedBox(
                       height: 40,
                     ),
