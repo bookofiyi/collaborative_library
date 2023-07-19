@@ -18,6 +18,7 @@ class _SignUpState extends State<SignUp> {
   final fNameController = TextEditingController();
   final lNameController = TextEditingController();
   final signupusernameController = TextEditingController();
+  final signupemailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -214,6 +215,77 @@ class _SignUpState extends State<SignUp> {
                       },
                     ),
                     const Gap(15),
+                    TextFormField(
+                      cursorColor: AppColor.primaryColor,
+                      autofocus: false,
+                      keyboardType: TextInputType.emailAddress,
+                      controller: signupemailController,
+                      // onChanged: (enteredEmail) => validateEmail(enteredEmail),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                      decoration: InputDecoration(
+                        isDense: true,
+                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        filled: true,
+                        focusColor: AppColor.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: AppColor.primaryColor,
+                            width: 1,
+                          ),
+                        ),
+                        suffixIcon: const Icon(
+                          Icons.email,
+                          color: AppColor.primaryColor,
+                        ),
+                        labelText: 'Email Address',
+                        labelStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                        hintText: 'Enter email address',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                      ),
+                      validator: (value) {
+                        // Check if this field is empty
+                        if (value!.isEmpty) {
+                          return 'Enter a valid Email Address';
+                        }
+                        // using regular expression
+                        if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                          return "Please enter a valid email address";
+                        }
+
+                        // using the school email
+                        if (!value.endsWith('@student.oauife.edu.ng')) {
+                          return 'Please use your school email';
+                        }
+
+                        // the email is valid
+                        return null;
+                      },
+                    ),
                   ],
                 )
               ],
