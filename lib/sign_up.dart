@@ -361,6 +361,93 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                     ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // if (SignUpScreen._formKey.currentState!.validate()) {
+                        //   if (controller.status != Status.isLoading) {
+                        //     controller.signUp(
+                        //       email: signupemailController.text.trim(),
+                        //       firstname: fNameController.text.trim(),
+                        //       lastname: lNameController.text.trim(),
+                        //       username: signupusernameController.text.trim(),
+                        //       password: signupPasswordController.text.trim(),
+                        //     );
+                        //   }
+                        // }
+                      },
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: AppColor.primaryColor,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: const [
+                            BoxShadow(
+                              blurRadius: 10,
+                              offset: Offset(0, 0),
+                              color: Color(0xffe2e5ed),
+                              spreadRadius: 5,
+                            ),
+                            BoxShadow(
+                              blurRadius: 15,
+                              offset: Offset(0, 2),
+                              color: Color(0xFF5B9BFF),
+                              spreadRadius: -5,
+                            ),
+                            BoxShadow(
+                              blurRadius: 20,
+                              offset: Offset(10, 0),
+                              color: Color(0xff5B9BFF),
+                              spreadRadius: -5,
+                            ),
+                          ],
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          customDescriptionText(
+                            "Already a member?",
+                            textAlign: TextAlign.center,
+                            colors: AppColor.normaltextColor,
+                            onTap: () {
+                              // Get.offAll(() => const LoginScreen());
+                            },
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          customDescriptionText(
+                            "Sign in",
+                            textAlign: TextAlign.center,
+                            colors: AppColor.primaryColor,
+                            onTap: () {
+                              // Get.offAll(() => const LoginScreen());
+                            },
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 )
               ],
