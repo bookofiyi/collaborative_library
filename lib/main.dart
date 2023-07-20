@@ -1,5 +1,4 @@
-// import 'package:collab_library/sign_in.dart';
-import 'package:collab_library/sign_up.dart';
+import 'package:collab_library/account_access/sign_up.dart';
 import 'package:flutter/material.dart';
 
 void main() {
