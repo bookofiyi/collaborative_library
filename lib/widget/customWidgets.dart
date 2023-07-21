@@ -1,10 +1,26 @@
 // ignore_for_file: file_names, prefer_conditional_assignment, sized_box_for_whitespace
 
+import 'package:collab_library/constants.dart';
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
 import 'package:collab_library/utils/loading_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+Widget customTag({required String courseName}) {
+  return Container(
+    color: AppColor.primaryColor,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        courseName,
+        style: const TextStyle(
+          color: kwhite,
+        ),
+      ),
+    ),
+  );
+}
 
 Widget customTitleText(
   String title, {

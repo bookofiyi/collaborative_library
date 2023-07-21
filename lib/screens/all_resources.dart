@@ -1,3 +1,4 @@
+import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_card/image_card.dart';
 
@@ -47,7 +48,7 @@ class _AllResourcesState extends State<AllResources> {
                           imageProvider: const AssetImage('assetName'),
                           width: MediaQuery.of(context).size.width / 2.5,
                           heightImage: 200,
-                          tags: const [Text('CSC201')],
+                          tags: [customTag(courseName: 'CSC201')],
                           title: const Text('Intro to CSC201'),
                           description: const Text('12th July 2023'),
                         );

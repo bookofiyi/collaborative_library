@@ -38,6 +38,47 @@ class _ResourceDetailsPageState extends State<ResourceDetailsPage> {
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.3,
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text('Intro to CSC201'),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Uploaded by Someone',
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                        Text(
+                          '12th July 2023',
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Text(
+                      'File Type: PDF',
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                    MaterialButton(
+                      onPressed: () {},
+                      child: const Row(
+                        children: [
+                          Icon(
+                            Icons.download_rounded,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('Download'),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
