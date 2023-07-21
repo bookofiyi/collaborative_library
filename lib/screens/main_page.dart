@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  const MainPage(
+      {super.key,
+      required this.onScreenHideButtonPressed,
+      required this.hideStatus});
+  final VoidCallback onScreenHideButtonPressed;
+  final bool hideStatus;
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -11,16 +16,16 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.large(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton.large(
+      //   onPressed: () {},
+      //   child: const Icon(Icons.add),
+      // ),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1.5,
         leading: const CircleAvatar(
           backgroundImage: AssetImage('assets/images/pic.jpg'),
-          radius: 20,
+          radius: 10,
         ),
         title: const Text('Hello, Iyiola'),
         actions: [
@@ -45,7 +50,7 @@ class _MainPageState extends State<MainPage> {
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('What are you looking for?'),
                     const TextField(),
@@ -62,35 +67,35 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          height: 100,
-                          width: 100,
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
                           color: const Color(0xFFE2E8F0),
                         ),
                         Container(
-                          height: 100,
-                          width: 100,
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
                           color: const Color(0xFFE2E8F0),
                         ),
                         Container(
-                          height: 100,
-                          width: 100,
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
                           color: const Color(0xFFE2E8F0),
                         ),
                         Container(
-                          height: 100,
-                          width: 100,
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
                           color: const Color(0xFFE2E8F0),
                         ),
                         Container(
-                          height: 100,
-                          width: 100,
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
                           color: const Color(0xFFE2E8F0),
                         ),
                       ],
@@ -108,20 +113,20 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 350,
-                          width: 350,
+                          height: MediaQuery.of(context).size.width / 2.5,
+                          width: MediaQuery.of(context).size.width / 2.5,
                           color: const Color(0xFFE2E8F0),
                         ),
                         Container(
-                          height: 350,
-                          width: 350,
+                          height: MediaQuery.of(context).size.width / 2.5,
+                          width: MediaQuery.of(context).size.width / 2.5,
                           color: const Color(0xFFE2E8F0),
                         ),
                       ],
@@ -130,6 +135,9 @@ class _MainPageState extends State<MainPage> {
                       height: 20,
                     ),
                     const Text('My Downloads'),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       width: double.infinity,
                       height: 350,
