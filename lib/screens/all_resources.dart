@@ -44,13 +44,16 @@ class _AllResourcesState extends State<AllResources> {
                     GridView.count(
                       crossAxisCount: 2,
                       children: List.generate(25, (index) {
-                        return FillImageCard(
-                          imageProvider: const AssetImage('assetName'),
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          heightImage: 200,
-                          tags: [customTag(courseName: 'CSC201')],
-                          title: const Text('Intro to CSC201'),
-                          description: const Text('12th July 2023'),
+                        return GestureDetector(
+                          onTap: () {},
+                          child: FillImageCard(
+                            imageProvider: const AssetImage('assetName'),
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            heightImage: 200,
+                            tags: [customTag(courseName: 'CSC201')],
+                            title: const Text('Intro to CSC201'),
+                            description: const Text('12th July 2023'),
+                          ),
                         );
                       }),
                     ),

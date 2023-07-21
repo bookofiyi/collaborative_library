@@ -1,3 +1,4 @@
+import 'package:collab_library/screens/all_resources.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -108,7 +109,13 @@ class _MainPageState extends State<MainPage> {
                       children: [
                         const Text('Newly Uploaded'),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) =>
+                                        const AllResources())));
+                          },
                           child: const Text('See all'),
                         ),
                       ],
