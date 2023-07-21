@@ -63,6 +63,9 @@ class _MainPageState extends State<MainPage> {
                       children: [
                         const Text('Courses'),
                         TextButton(
+                          style: TextButton.styleFrom(
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
                           onPressed: () {},
                           child: const Text('See all'),
                         ),
@@ -109,6 +112,9 @@ class _MainPageState extends State<MainPage> {
                       children: [
                         const Text('Newly Uploaded'),
                         TextButton(
+                          style: TextButton.styleFrom(
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
                           onPressed: () {
                             Navigator.push(
                                 context,
