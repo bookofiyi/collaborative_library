@@ -1,3 +1,4 @@
+import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 
@@ -84,18 +85,30 @@ class _ResourceDetailsPageState extends State<ResourceDetailsPage> {
             const SizedBox(
               height: 50,
             ),
-            MaterialButton(
-              onPressed: () {},
-              child: const Row(
-                children: [
-                  Icon(
-                    Icons.download_rounded,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('Download'),
-                ],
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              child: MaterialButton(
+                onPressed: () {},
+                height: 50,
+                color: AppColor.primaryColor,
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.download_rounded,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Download',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

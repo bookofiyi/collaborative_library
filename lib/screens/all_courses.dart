@@ -10,6 +10,19 @@ class AllCourses extends StatefulWidget {
 class _AllCoursesState extends State<AllCourses> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1.5,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+        ),
+        title: const Text('All Courses'),
+        centerTitle: true,
+      ),
+    );
   }
 }

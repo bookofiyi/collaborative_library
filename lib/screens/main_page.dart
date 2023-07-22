@@ -1,3 +1,4 @@
+import 'package:collab_library/screens/all_courses.dart';
 import 'package:collab_library/screens/all_resources.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +70,12 @@ class _MainPageState extends State<MainPage> {
                           style: TextButton.styleFrom(
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AllCourses()));
+                          },
                           child: const Text('See all'),
                         ),
                       ],
