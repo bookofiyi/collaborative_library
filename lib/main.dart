@@ -1,5 +1,6 @@
 // import 'package:collab_library/account_access/sign_up.dart';
-import 'package:collab_library/screens/home_page.dart';
+import 'package:collab_library/account_access/check_user.dart';
+// import 'package:collab_library/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'San Francisco',
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const CheckUser(),
     );
   }
 }

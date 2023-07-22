@@ -2,7 +2,8 @@ import 'package:collab_library/constants.dart';
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
 import 'package:collab_library/logic/size_config.dart';
-import 'package:collab_library/widget/customWIdgets.dart';
+import 'package:collab_library/widget/customWidgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -18,9 +19,15 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   // String emailAddress = '';
   // String password = '';
-  final loginemailController = TextEditingController();
-  final loginpasswordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool isHiddenPassword = true;
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+  }
 
   void showInSnackBar(context, String value) {
     final snackBar = SnackBar(
@@ -36,6 +43,13 @@ class _SignInState extends State<SignIn> {
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -87,7 +101,7 @@ class _SignInState extends State<SignIn> {
                   children: [
                     TextFormField(
                       cursorColor: AppColor.primaryColor,
-                      controller: loginemailController,
+                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
@@ -144,7 +158,7 @@ class _SignInState extends State<SignIn> {
                     TextFormField(
                       cursorColor: AppColor.primaryColor,
                       // controller: controller.loginpasswordController,
-                      controller: loginpasswordController,
+                      controller: _passwordController,
                       keyboardType: TextInputType.name,
                       textInputAction: TextInputAction.done,
                       obscureText: isHiddenPassword,
