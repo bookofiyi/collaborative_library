@@ -24,9 +24,12 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1.5,
-        leading: const CircleAvatar(
-          backgroundImage: AssetImage('assets/images/pic.jpg'),
-          radius: 10,
+        leading: const Padding(
+          padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+          child: CircleAvatar(
+            backgroundImage: AssetImage('assets/images/pic.jpg'),
+            radius: 10,
+          ),
         ),
         title: const Text('Hello, Iyiola'),
         actions: [

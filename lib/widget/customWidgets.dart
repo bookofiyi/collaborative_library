@@ -9,13 +9,17 @@ import 'package:get/get.dart';
 
 Widget customTag({required String courseName}) {
   return Container(
-    color: AppColor.primaryColor,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15),
+      color: AppColor.primaryColor,
+    ),
     child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4.0),
       child: Text(
         courseName,
         style: const TextStyle(
           color: kwhite,
+          fontSize: 10,
         ),
       ),
     ),

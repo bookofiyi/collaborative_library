@@ -1,3 +1,4 @@
+import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 
 class ResourceDetailsPage extends StatefulWidget {
@@ -23,68 +24,82 @@ class _ResourceDetailsPageState extends State<ResourceDetailsPage> {
         title: const Text('Details'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    Image(
-                      image: const AssetImage(''),
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.3,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text('Intro to CSC201'),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Uploaded by Someone',
-                          style: TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                        Text(
-                          '12th July 2023',
-                          style: TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Text(
-                      'File Type: PDF',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                    MaterialButton(
-                      onPressed: () {},
-                      child: const Row(
-                        children: [
-                          Icon(
-                            Icons.download_rounded,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text('Download'),
-                        ],
-                      ),
-                    ),
-                  ],
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image(
+              image: const AssetImage('assets/images/got.jpg'),
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.3,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: customTag(courseName: 'CSC201'),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
+              child: Text(
+                'Intro to CSC201',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-          ),
-        ],
+            const Padding(
+              padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Uploaded by Someone',
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                  Text(
+                    '12th July 2023',
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 16.0),
+              child: Text(
+                'File Type: PDF',
+                style: TextStyle(
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            MaterialButton(
+              onPressed: () {},
+              child: const Row(
+                children: [
+                  Icon(
+                    Icons.download_rounded,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('Download'),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

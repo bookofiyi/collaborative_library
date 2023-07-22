@@ -1,3 +1,4 @@
+import 'package:collab_library/screens/resource_details.dart';
 import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_card/image_card.dart';
@@ -26,40 +27,47 @@ class _AllResourcesState extends State<AllResources> {
         centerTitle: true,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          const Text('25 results'),
           Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('25 results'),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    GridView.count(
-                      crossAxisCount: 2,
-                      children: List.generate(25, (index) {
-                        return GestureDetector(
-                          onTap: () {},
-                          child: FillImageCard(
-                            imageProvider: const AssetImage('assetName'),
-                            width: MediaQuery.of(context).size.width / 2.5,
-                            heightImage: 200,
-                            tags: [customTag(courseName: 'CSC201')],
-                            title: const Text('Intro to CSC201'),
-                            description: const Text('12th July 2023'),
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: List.generate(25, (index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ResourceDetailsPage()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FillImageCard(
+                      imageProvider: const AssetImage('assets/images/got.jpg'),
+                      width: MediaQuery.of(context).size.width * 2.5,
+                      heightImage: 100,
+                      // height: 300,
+                      tags: [customTag(courseName: 'CSC201')],
+                      title: const Text('Intro to CSC201'),
+                      description: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Uploaded by Someone',
+                            style: TextStyle(fontSize: 10),
                           ),
-                        );
-                      }),
+                          Text(
+                            '12th July 2023',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      color: const Color(0xFFF8FAFC),
                     ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              }),
             ),
           ),
         ],
