@@ -16,8 +16,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  String emailAddress = '';
-  String password = '';
+  // String emailAddress = '';
+  // String password = '';
   final loginemailController = TextEditingController();
   final loginpasswordController = TextEditingController();
   bool isHiddenPassword = true;
