@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "617192475727",
+    "project_id": "collaborative-library-bec9b",
+    "storage_bucket": "collaborative-library-bec9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617192475727:android:f1316d9325bcaa05576e3a",
+        "android_client_info": {
+          "package_name": "com.example.collab_library"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617192475727-e1ltor448d24peidbouqjeiapv15kpmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBCAi4H_dYgLzHuenESY6kHvOrvXjuxxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617192475727-e1ltor448d24peidbouqjeiapv15kpmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
