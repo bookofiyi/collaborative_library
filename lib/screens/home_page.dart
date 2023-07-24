@@ -2,6 +2,8 @@ import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/screens/downloads.dart';
 import 'package:collab_library/screens/main_page.dart';
 import 'package:collab_library/screens/profile.dart';
+import 'package:collab_library/screens/upload_audio.dart';
+import 'package:collab_library/screens/upload_doc.dart';
 import 'package:collab_library/screens/upload_video.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -88,6 +90,8 @@ class _HomePageState extends State<HomePage> {
                 return Wrap(
                   children: [
                     const ListTile(title: Text('Type of resource')),
+
+                    // Video
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -101,15 +105,35 @@ class _HomePageState extends State<HomePage> {
                         subtitle: Text('Supported file types: mp4, mkv'),
                       ),
                     ),
-                    const ListTile(
-                      leading: Icon(Icons.edit_document),
-                      title: Text('Document'),
-                      subtitle: Text('Supported file types: docx, pdf'),
+
+                    // Documents
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const UploadDoc())));
+                      },
+                      child: const ListTile(
+                        leading: Icon(Icons.edit_document),
+                        title: Text('Document'),
+                        subtitle: Text('Supported file types: docx, pdf'),
+                      ),
                     ),
-                    const ListTile(
-                      leading: Icon(Icons.audiotrack_rounded),
-                      title: Text('Audio'),
-                      subtitle: Text('Supported file types: mp3, 3gpp'),
+
+                    // Audio
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const UploadAudio())));
+                      },
+                      child: const ListTile(
+                        leading: Icon(Icons.audiotrack_rounded),
+                        title: Text('Audio'),
+                        subtitle: Text('Supported file types: mp3, 3gpp'),
+                      ),
                     ),
                   ],
                 );
