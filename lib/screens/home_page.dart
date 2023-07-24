@@ -80,7 +80,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: ((context) {
+                return const Wrap(
+                  children: [
+                    ListTile(title: Text('Type of resource')),
+                    ListTile(
+                      leading: Icon(Icons.video_camera_back_rounded),
+                      title: Text('Video'),
+                      subtitle: Text('Supported file types: mp4, mkv'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.edit_document),
+                      title: Text('Document'),
+                      subtitle: Text('Supported file types: docx, pdf'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.audiotrack_rounded),
+                      title: Text('Audio'),
+                      subtitle: Text('Supported file types: mp3, 3gpp'),
+                    ),
+                  ],
+                );
+              }));
+        },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
