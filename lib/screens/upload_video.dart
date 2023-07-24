@@ -20,7 +20,7 @@ class _UploadVideoState extends State<UploadVideo> {
           },
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        title: const Text('All Resources'),
+        title: const Text('Upload Video'),
         centerTitle: true,
       ),
     );
