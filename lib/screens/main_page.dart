@@ -1,3 +1,4 @@
+import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/screens/all_courses.dart';
 import 'package:collab_library/screens/all_resources.dart';
 import 'package:collab_library/screens/resource_details.dart';
@@ -18,6 +19,32 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  // String? selectedValue = 'Part 1';
+  // List<DropdownMenuItem<String>> partList = [
+  //   const DropdownMenuItem(
+  //     value: 'part1',
+  //     child: Text('Part 1'),
+  //   ),
+  //   const DropdownMenuItem(
+  //     value: 'part2',
+  //     child: Text('Part 2'),
+  //   ),
+  //   const DropdownMenuItem(
+  //     value: 'part3',
+  //     child: Text('Part 3'),
+  //   ),
+  //   const DropdownMenuItem(
+  //     value: 'part4',
+  //     child: Text('Part 4'),
+  //   ),
+  //   const DropdownMenuItem(
+  //     value: 'part5',
+  //     child: Text('Part 5'),
+  //   ),
+  // ];
+
+  String? selectedValue = 'Part 1';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,16 +64,64 @@ class _MainPageState extends State<MainPage> {
         ),
         title: const Text('Hello, Iyiola'),
         actions: [
-          MaterialButton(
-            onPressed: () {},
-            color: const Color(0xFF121212),
-            child: const Row(
-              children: [
-                Text('Part 2'),
-                Icon(Icons.arrow_downward_rounded),
-              ],
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0, right: 8.0, bottom: 4.0),
+            child: SizedBox(
+              width: 90,
+              child: DropdownButtonFormField(
+                  items: <String>[
+                    'Part 1',
+                    'Part 2',
+                    'Part 3',
+                    'Part 4',
+                    'Part 5'
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  value: selectedValue,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    fillColor: Colors.grey[500]!.withOpacity(0.2),
+                    filled: true,
+                    focusColor: AppColor.primaryColor,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        15,
+                      ),
+                      borderSide: const BorderSide(
+                        color: AppColor.primaryColor,
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedValue = value;
+                    });
+                  }),
             ),
           ),
+          // MaterialButton(
+          //   onPressed: () {},
+          //   color: const Color(0xFF121212),
+          //   child: const Row(
+          //     children: [
+          //       Text('Part 2'),
+          //       Icon(Icons.arrow_downward_rounded),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
       body: Column(
@@ -165,7 +240,10 @@ class _MainPageState extends State<MainPage> {
                                 heightImage: 100,
                                 // height: 300,
                                 tags: [customTag(courseName: 'CSC201')],
-                                title: const Text('Intro to CSC201'),
+                                title: const Text(
+                                  'Intro to CSC201',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                                 description: const Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
