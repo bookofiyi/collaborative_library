@@ -106,6 +106,8 @@ class _HomePageState extends State<HomePage> {
                 );
               }));
         },
+        splashColor: AppColor.primaryColor,
+        focusColor: AppColor.primaryColor,
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

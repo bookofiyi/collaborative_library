@@ -1,16 +1,17 @@
+import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/screens/resource_details.dart';
 import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_card/image_card.dart';
 
-class AllResources extends StatefulWidget {
-  const AllResources({super.key});
-
+class SearchResults extends StatefulWidget {
+  const SearchResults({super.key, required this.searchQuery});
+  final String searchQuery;
   @override
-  State<AllResources> createState() => _AllResourcesState();
+  State<SearchResults> createState() => _SearchResultsState();
 }
 
-class _AllResourcesState extends State<AllResources> {
+class _SearchResultsState extends State<SearchResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +24,34 @@ class _AllResourcesState extends State<AllResources> {
           },
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        title: const Text('All Resources'),
+        title: const Text('Search Results'),
         centerTitle: true,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '25 results for ',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  widget.searchQuery,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: AppColor.primaryColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,

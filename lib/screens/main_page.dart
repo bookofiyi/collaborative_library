@@ -3,6 +3,7 @@ import 'package:collab_library/logic/font_family.dart';
 import 'package:collab_library/screens/all_courses.dart';
 import 'package:collab_library/screens/all_resources.dart';
 import 'package:collab_library/screens/resource_details.dart';
+import 'package:collab_library/screens/search_result.dart';
 import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_card/image_card.dart';
@@ -20,6 +21,43 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final TextEditingController _searchFieldController = TextEditingController();
+  bool _showClearIcon = false;
+
+  void _textChangeListener() {
+    setState(() {
+      _showClearIcon = _searchFieldController.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void initState() {
+    _searchFieldController.addListener(_textChangeListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _searchFieldController.dispose();
+    super.dispose();
+  }
+
+  void showInSnackBar(context, String value) {
+    final snackBar = SnackBar(
+      content: Text(value),
+      backgroundColor: AppColor.primaryColor,
+      behavior: SnackBarBehavior.floating,
+      action: SnackBarAction(
+        label: 'DISMISS',
+        textColor: AppColor.kwhiteColor,
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   // String? selectedValue = 'Part 1';
   // List<DropdownMenuItem<String>> partList = [
   //   const DropdownMenuItem(
@@ -138,8 +176,21 @@ class _MainPageState extends State<MainPage> {
                     ),
                     TextFormField(
                       cursorColor: AppColor.primaryColor,
-                      // controller: _emailController,
+                      controller: _searchFieldController,
                       textInputAction: TextInputAction.search,
+                      onFieldSubmitted: (value) {
+                        if (value.isNotEmpty) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SearchResults(
+                                        searchQuery: value,
+                                      )));
+                        } else {
+                          showInSnackBar(context,
+                              'Search query cannot be empty. Try entering something...');
+                        }
+                      },
                       decoration: InputDecoration(
                         isDense: true,
                         fillColor: Colors.grey[500]!.withOpacity(0.2),
@@ -166,6 +217,19 @@ class _MainPageState extends State<MainPage> {
                           Icons.search_rounded,
                           color: AppColor.primaryColor,
                         ),
+                        suffixIcon: _showClearIcon
+                            ? IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _searchFieldController.clear();
+                                    _showClearIcon = false;
+                                  });
+                                },
+                                icon: const Icon(
+                                  Icons.clear,
+                                  color: AppColor.primaryColor,
+                                ))
+                            : null,
                         hintText: 'Search resource title, course...',
                         hintStyle: Theme.of(context)
                             .textTheme
