@@ -1,6 +1,9 @@
 import 'package:collab_library/screens/all_courses.dart';
 import 'package:collab_library/screens/all_resources.dart';
+import 'package:collab_library/screens/resource_details.dart';
+import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:image_card/image_card.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage(
@@ -138,21 +141,67 @@ class _MainPageState extends State<MainPage> {
                     // const SizedBox(
                     //   height: 10,
                     // ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.width / 2.5,
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          color: const Color(0xFFE2E8F0),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.width / 2.5,
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          color: const Color(0xFFE2E8F0),
-                        ),
-                      ],
+
+                    SizedBox(
+                      height: 200,
+                      child: GridView.count(
+                        scrollDirection: Axis.horizontal,
+                        crossAxisCount: 1,
+                        children: List.generate(6, (index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ResourceDetailsPage()));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FillImageCard(
+                                imageProvider:
+                                    const AssetImage('assets/images/got.jpg'),
+                                width: MediaQuery.of(context).size.width * 2.5,
+                                heightImage: 100,
+                                // height: 300,
+                                tags: [customTag(courseName: 'CSC201')],
+                                title: const Text('Intro to CSC201'),
+                                description: const Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Uploaded by Someone',
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                    Text(
+                                      '12th July 2023',
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                  ],
+                                ),
+                                color: const Color(0xFFF8FAFC),
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
                     ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Container(
+                    //       height: MediaQuery.of(context).size.width / 2.5,
+                    //       width: MediaQuery.of(context).size.width / 2.5,
+                    //       color: const Color(0xFFE2E8F0),
+                    //     ),
+                    //     Container(
+                    //       height: MediaQuery.of(context).size.width / 2.5,
+                    //       width: MediaQuery.of(context).size.width / 2.5,
+                    //       color: const Color(0xFFE2E8F0),
+                    //     ),
+                    //   ],
+                    // ),
                     const SizedBox(
                       height: 20,
                     ),
