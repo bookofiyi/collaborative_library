@@ -1,12 +1,11 @@
-// import 'package:collab_library/account_access/sign_up.dart';
 import 'package:collab_library/account_access/check_user.dart';
-// import 'package:collab_library/screens/home_page.dart';
+import 'package:collab_library/logic/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
         useMaterial3: true,
         fontFamily: 'San Francisco',
       ),

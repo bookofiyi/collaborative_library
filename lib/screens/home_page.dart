@@ -54,21 +54,21 @@ class _HomePageState extends State<HomePage> {
 
   List<PersistentBottomNavBarItem> _navBarItems() => [
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.home_max_rounded),
+          icon: const Icon(Icons.home_rounded),
           title: 'Home',
           activeColorPrimary: AppColor.primaryColor,
           inactiveColorPrimary: AppColor.disacbleColor,
           inactiveColorSecondary: AppColor.gray200Color,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.download_done_rounded),
+          icon: const Icon(Icons.download_rounded),
           title: 'Downloads',
           activeColorPrimary: AppColor.primaryColor,
           inactiveColorPrimary: AppColor.disacbleColor,
           inactiveColorSecondary: AppColor.gray200Color,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.verified_user_rounded),
+          icon: const Icon(Icons.person_2_rounded),
           title: 'Profile',
           activeColorPrimary: AppColor.primaryColor,
           inactiveColorPrimary: AppColor.disacbleColor,

@@ -1,4 +1,5 @@
 import 'package:collab_library/logic/colors.dart';
+import 'package:collab_library/logic/font_family.dart';
 import 'package:collab_library/screens/all_courses.dart';
 import 'package:collab_library/screens/all_resources.dart';
 import 'package:collab_library/screens/resource_details.dart';
@@ -112,16 +113,6 @@ class _MainPageState extends State<MainPage> {
                   }),
             ),
           ),
-          // MaterialButton(
-          //   onPressed: () {},
-          //   color: const Color(0xFF121212),
-          //   child: const Row(
-          //     children: [
-          //       Text('Part 2'),
-          //       Icon(Icons.arrow_downward_rounded),
-          //     ],
-          //   ),
-          // ),
         ],
       ),
       body: Column(
@@ -135,15 +126,69 @@ class _MainPageState extends State<MainPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('What are you looking for?'),
-                    const TextField(),
+                    const Text(
+                      'What are you looking for?',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      cursorColor: AppColor.primaryColor,
+                      // controller: _emailController,
+                      textInputAction: TextInputAction.search,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        filled: true,
+                        focusColor: AppColor.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            (15),
+                          ),
+                          borderSide: const BorderSide(
+                            color: AppColor.primaryColor,
+                            width: (1),
+                          ),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.search_rounded,
+                          color: AppColor.primaryColor,
+                        ),
+                        hintText: 'Search resource title, course...',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('Courses'),
+                        const Text(
+                          'Courses',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         TextButton(
                           style: TextButton.styleFrom(
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -197,7 +242,13 @@ class _MainPageState extends State<MainPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('Newly Uploaded'),
+                        const Text(
+                          'Newly Uploaded',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         TextButton(
                           style: TextButton.styleFrom(
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -283,7 +334,13 @@ class _MainPageState extends State<MainPage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text('My Downloads'),
+                    const Text(
+                      'My Downloads',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
