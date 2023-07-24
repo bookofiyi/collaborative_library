@@ -269,7 +269,7 @@ class _MainPageState extends State<MainPage> {
                     // ),
 
                     SizedBox(
-                      height: 200,
+                      height: 190,
                       child: GridView.count(
                         scrollDirection: Axis.horizontal,
                         crossAxisCount: 1,
@@ -283,7 +283,7 @@ class _MainPageState extends State<MainPage> {
                                           const ResourceDetailsPage()));
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.only(right: 16.0),
                               child: FillImageCard(
                                 imageProvider:
                                     const AssetImage('assets/images/got.jpg'),
@@ -349,7 +349,12 @@ class _MainPageState extends State<MainPage> {
                       height: 350,
                       color: const Color(0xFFE2E8F0),
                       child: const Center(
-                        child: Text('You have no downloads yet.'),
+                        child: Text(
+                          'You have no downloads yet.',
+                          style: TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              ),
+                        ),
                       ),
                     ),
                   ],

@@ -15,6 +15,19 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1.5,
+        title: const Text('Profile'),
+        centerTitle: true,
+      ),
+      body: const Center(
+        child: CircleAvatar(
+          backgroundImage: AssetImage('assets/images/pic.jpg'),
+          radius: 100,
+        ),
+      ),
+    );
   }
 }

@@ -27,41 +27,23 @@ class _AllCoursesState extends State<AllCourses> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => const AllResources())));
-              },
-              child: Container(
-                height: 60,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFC1E0FF),
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          'CSC201',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Icon(Icons.arrow_forward_ios_rounded)
-                    ],
-                  ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources())));
+            },
+            child: const ListTile(
+              title: Text(
+                'CSC201',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
               ),
+              subtitle: Text('Introduction to Python Programming'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           )
         ],
