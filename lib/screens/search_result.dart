@@ -66,8 +66,7 @@ class _SearchResultsState extends State<SearchResults> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: FillImageCard(
-                      imageProvider:
-                          const AssetImage('assets/images/audioPreview.png'),
+                      imageProvider: const AssetImage('assets/images/got.jpg'),
                       width: MediaQuery.of(context).size.width * 2.5,
                       heightImage: 100,
                       // height: 300,

@@ -53,9 +53,7 @@ class _AllCoursesState extends State<AllCourses> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => const AllResources(
-                            courseCode: 'CSC202',
-                          ))));
+                      builder: ((context) => const AllResources())));
             },
             child: const ListTile(
               title: Text(

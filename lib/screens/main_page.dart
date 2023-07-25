@@ -270,73 +270,39 @@ class _MainPageState extends State<MainPage> {
                     // const SizedBox(
                     //   height: 10,
                     // ),
-
-                    SizedBox(
-                      height: 110,
-                      child: GridView.count(
-                        scrollDirection: Axis.horizontal,
-                        // shrinkWrap: true,
-                        crossAxisCount: 1,
-                        children: List.generate(5, (index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: ((context) => const AllResources(
-                                            courseCode: 'CSC201',
-                                          ))));
-                            },
-                            child: const ListTile(
-                              visualDensity: VisualDensity.compact,
-                              dense: true,
-                              title: Text(
-                                'CSC201',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              // subtitle: Text('Computer Programming I'),
-                              trailing: Icon(Icons.arrow_forward_ios_rounded),
-                            ),
-                          );
-                        }),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
+                          color: const Color(0xFFE2E8F0),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
+                          color: const Color(0xFFE2E8F0),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
+                          color: const Color(0xFFE2E8F0),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
+                          color: const Color(0xFFE2E8F0),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.width / 5.5,
+                          width: MediaQuery.of(context).size.width / 5.5,
+                          color: const Color(0xFFE2E8F0),
+                        ),
+                      ],
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //   children: [
-                    //     Container(
-                    //       height: MediaQuery.of(context).size.width / 5.5,
-                    //       width: MediaQuery.of(context).size.width / 5.5,
-                    //       color: const Color(0xFFE2E8F0),
-                    //     ),
-                    //     Container(
-                    //       height: MediaQuery.of(context).size.width / 5.5,
-                    //       width: MediaQuery.of(context).size.width / 5.5,
-                    //       color: const Color(0xFFE2E8F0),
-                    //     ),
-                    //     Container(
-                    //       height: MediaQuery.of(context).size.width / 5.5,
-                    //       width: MediaQuery.of(context).size.width / 5.5,
-                    //       color: const Color(0xFFE2E8F0),
-                    //     ),
-                    //     Container(
-                    //       height: MediaQuery.of(context).size.width / 5.5,
-                    //       width: MediaQuery.of(context).size.width / 5.5,
-                    //       color: const Color(0xFFE2E8F0),
-                    //     ),
-                    //     Container(
-                    //       height: MediaQuery.of(context).size.width / 5.5,
-                    //       width: MediaQuery.of(context).size.width / 5.5,
-                    //       color: const Color(0xFFE2E8F0),
-                    //     ),
-                    //   ],
-                    // ),
-                    // const SizedBox(
-                    //   height: 20,
-                    // ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -355,9 +321,8 @@ class _MainPageState extends State<MainPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: ((context) => const AllResources(
-                                          courseCode: '',
-                                        ))));
+                                    builder: ((context) =>
+                                        const AllResources())));
                           },
                           child: const Text('See all'),
                         ),
@@ -384,8 +349,8 @@ class _MainPageState extends State<MainPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(right: 16.0),
                               child: FillImageCard(
-                                imageProvider: const AssetImage(
-                                    'assets/images/docPreview.png'),
+                                imageProvider:
+                                    const AssetImage('assets/images/got.jpg'),
                                 width: MediaQuery.of(context).size.width * 2.5,
                                 heightImage: 100,
                                 // height: 300,

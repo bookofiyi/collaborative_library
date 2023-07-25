@@ -1,5 +1,9 @@
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
+import 'package:collab_library/logic/get_device_files.dart';
+import 'package:collab_library/models/course_resource.dart';
+import 'package:collab_library/repositories/course_repository.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class UploadDoc extends StatefulWidget {
@@ -10,7 +14,12 @@ class UploadDoc extends StatefulWidget {
 }
 
 class _UploadDocState extends State<UploadDoc> {
-  String? selectedValue = 'CSC201';
+  final courseRepo = CourseRepository();
+
+  String selectedValue = 'CSC201';
+
+  PlatformFile? selectedFile;
+  String resourceTitle = '';
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +55,11 @@ class _UploadDocState extends State<UploadDoc> {
               TextFormField(
                 cursorColor: AppColor.primaryColor,
                 textInputAction: TextInputAction.done,
+                onChanged: (value) {
+                  setState(() {
+                    resourceTitle = value;
+                  });
+                },
                 decoration: InputDecoration(
                   isDense: true,
                   fillColor: Colors.grey[500]!.withOpacity(0.2),
@@ -111,7 +125,7 @@ class _UploadDocState extends State<UploadDoc> {
                     'MTH205',
                     'MTH306',
                     'CPE201',
-                    'CPE203'
+                    'CPE203',
                   ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -143,6 +157,7 @@ class _UploadDocState extends State<UploadDoc> {
                     ),
                   ),
                   onChanged: (value) {
+                    if (value == null) return;
                     setState(() {
                       selectedValue = value;
                     });
@@ -165,8 +180,12 @@ class _UploadDocState extends State<UploadDoc> {
                   children: [
                     const Icon(Icons.document_scanner_rounded),
                     TextButton(
-                      onPressed: () {
-                        // _pickFile();
+                      onPressed: () async {
+                        final result = await GetDeviceFiles.pickFile();
+                        if (result != null) {
+                          selectedFile = result;
+                        }
+                        setState(() {});
                       },
                       child: const Text(
                         'Choose File',
@@ -184,7 +203,22 @@ class _UploadDocState extends State<UploadDoc> {
                 height: 20,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () async {
+                  if (selectedFile == null) return;
+
+                  final courseResource = CourseResource(
+                      title: resourceTitle,
+                      courseId: selectedValue,
+                      dateUploaded: DateTime.now(),
+                      fileUrl: '');
+
+                  final updateResource = await courseRepo.uploadCourseResource(
+                      courseResource, selectedFile!);
+
+                  if(updateResource != null) {
+                    Navigator.pop(context, updateResource);
+                  }
+                },
                 height: 50,
                 color: AppColor.primaryColor,
                 child: const Row(
