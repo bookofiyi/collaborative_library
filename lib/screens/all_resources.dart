@@ -1,10 +1,13 @@
+import 'dart:js_interop';
+
 import 'package:collab_library/screens/resource_details.dart';
 import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_card/image_card.dart';
 
 class AllResources extends StatefulWidget {
-  const AllResources({super.key});
+  const AllResources({super.key, this.courseCode});
+  final String? courseCode;
 
   @override
   State<AllResources> createState() => _AllResourcesState();
@@ -23,7 +26,14 @@ class _AllResourcesState extends State<AllResources> {
           },
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        title: const Text('All Resources'),
+        title: widget.courseCode.isNull
+            ? const Text('All Resources')
+            : Column(
+                children: [
+                  const Text('All Resources'),
+                  Text(widget.courseCode!),
+                ],
+              ),
         centerTitle: true,
       ),
       body: Column(

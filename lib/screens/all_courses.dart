@@ -32,7 +32,9 @@ class _AllCoursesState extends State<AllCourses> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => const AllResources())));
+                      builder: ((context) => const AllResources(
+                            courseCode: 'CSC201',
+                          ))));
             },
             child: const ListTile(
               title: Text(
@@ -42,10 +44,50 @@ class _AllCoursesState extends State<AllCourses> {
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Introduction to Python Programming'),
+              subtitle: Text('Computer Programming I'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
-          )
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources())));
+            },
+            child: const ListTile(
+              title: Text(
+                'CSC202',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Computer Programming II'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'CSC202',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'CSC202',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Computer Programming II'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
         ],
       ),
     );
