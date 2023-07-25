@@ -5,7 +5,7 @@ class GetDeviceFiles {
       {FileType fileType = FileType.any}) async {
     try {
       final pickedFiles = await FilePicker.platform.pickFiles(
-        type: FileType.any,
+        type: fileType,
         withData: true,
         withReadStream: true,
         allowMultiple: false,

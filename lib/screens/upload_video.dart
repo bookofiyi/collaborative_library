@@ -1,8 +1,9 @@
-// import 'dart:io';
-
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
-// import 'package:file_picker/file_picker.dart';
+import 'package:collab_library/logic/get_device_files.dart';
+import 'package:collab_library/models/course_resource.dart';
+import 'package:collab_library/repositories/course_repository.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class UploadVideo extends StatefulWidget {
@@ -13,24 +14,12 @@ class UploadVideo extends StatefulWidget {
 }
 
 class _UploadVideoState extends State<UploadVideo> {
-  String? selectedValue = 'CSC201';
-  // FilePickerResult? result;
+  final courseRepo = CourseRepository();
 
-  // Future<File?> _pickFile() async {
-  //   result = await FilePicker.platform
-  //       .pickFiles(type: FileType.custom, allowedExtensions: [
-  //     'mp4',
-  //     'mkv',
-  //     'avi',
-  //     'mov',
-  //   ]);
-  //   if (result != null) {
-  //     File file = File(result!.files.first.path!);
-  //     return file;
-  //   } else {
-  //     return null;
-  //   }
-  // }
+  String selectedCourse = 'CSC201';
+
+  PlatformFile? selectedFile;
+  String resourceTitle = '';
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +127,7 @@ class _UploadVideoState extends State<UploadVideo> {
                       child: Text(value),
                     );
                   }).toList(),
-                  value: selectedValue,
+                  value: selectedCourse,
                   decoration: InputDecoration(
                     isDense: true,
                     fillColor: Colors.grey[500]!.withOpacity(0.2),
@@ -163,8 +152,9 @@ class _UploadVideoState extends State<UploadVideo> {
                     ),
                   ),
                   onChanged: (value) {
+                    if (value == null) return;
                     setState(() {
-                      selectedValue = value;
+                      selectedCourse = value;
                     });
                   }),
               const SizedBox(
@@ -185,7 +175,13 @@ class _UploadVideoState extends State<UploadVideo> {
                   children: [
                     const Icon(Icons.video_camera_back_rounded),
                     TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        final result = await GetDeviceFiles.pickFile(
+                            fileType: FileType.video);
+                        if (result != null) {
+                          selectedFile = result;
+                        }
+                        setState(() {});
                         // _pickFile();
                       },
                       child: const Text(
@@ -204,7 +200,25 @@ class _UploadVideoState extends State<UploadVideo> {
                 height: 20,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () async {
+                  if (selectedFile == null) {
+                    final courseResource = CourseResource(
+                        title: resourceTitle,
+                        courseId: selectedCourse,
+                        dateUploaded: DateTime.now(),
+                        fileUrl: '',
+                        fileType: 'video');
+
+                    final updateResource = await courseRepo
+                        .uploadCourseResource(courseResource, selectedFile!);
+
+                    if (updateResource != null) {
+                      //CLOSE THE PAGE AFTER UPLOAD IS DONE
+                      // ignore: use_build_context_synchronously
+                      Navigator.pop(context, updateResource);
+                    }
+                  }
+                },
                 height: 50,
                 color: AppColor.primaryColor,
                 child: const Row(
