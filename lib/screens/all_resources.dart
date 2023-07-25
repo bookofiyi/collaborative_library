@@ -56,7 +56,8 @@ class _AllResourcesState extends State<AllResources> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: FillImageCard(
-                      imageProvider: const AssetImage('assets/images/got.jpg'),
+                      imageProvider:
+                          const AssetImage('assets/images/docPreview.png'),
                       width: MediaQuery.of(context).size.width * 2.5,
                       heightImage: 100,
                       // height: 300,
