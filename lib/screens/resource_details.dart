@@ -32,7 +32,7 @@ class _ResourceDetailsPageState extends State<ResourceDetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image(
-              image: const AssetImage('assets/images/got.jpg'),
+              image: const AssetImage('assets/images/docPreview.png'),
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.3,
             ),
