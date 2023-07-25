@@ -3,7 +3,6 @@ import 'package:file_picker/file_picker.dart';
 class GetDeviceFiles {
   static Future<PlatformFile?> pickFile(
       {FileType fileType = FileType.any}) async {
-
     try {
       final pickedFiles = await FilePicker.platform.pickFiles(
         type: FileType.any,
