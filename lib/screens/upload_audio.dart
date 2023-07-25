@@ -1,5 +1,9 @@
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
+import 'package:collab_library/logic/get_device_files.dart';
+import 'package:collab_library/models/course_resource.dart';
+import 'package:collab_library/repositories/course_repository.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class UploadAudio extends StatefulWidget {
@@ -10,7 +14,12 @@ class UploadAudio extends StatefulWidget {
 }
 
 class _UploadAudioState extends State<UploadAudio> {
-  String? selectedValue = 'CSC201';
+  final courseRepo = CourseRepository();
+
+  String selectedCourse = 'CSC201';
+
+  PlatformFile? selectedFile;
+  String resourceTitle = '';
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +127,7 @@ class _UploadAudioState extends State<UploadAudio> {
                       child: Text(value),
                     );
                   }).toList(),
-                  value: selectedValue,
+                  value: selectedCourse,
                   decoration: InputDecoration(
                     isDense: true,
                     fillColor: Colors.grey[500]!.withOpacity(0.2),
@@ -143,8 +152,9 @@ class _UploadAudioState extends State<UploadAudio> {
                     ),
                   ),
                   onChanged: (value) {
+                    if (value == null) return;
                     setState(() {
-                      selectedValue = value;
+                      selectedCourse = value;
                     });
                   }),
               const SizedBox(
@@ -161,12 +171,17 @@ class _UploadAudioState extends State<UploadAudio> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Icon(Icons.audio_file_rounded),
                     TextButton(
-                      onPressed: () {
-                        // _pickFile();
+                      onPressed: () async {
+                        final result = await GetDeviceFiles.pickFile(
+                          fileType: FileType.audio,
+                        );
+                        if (result != null) {
+                          selectedFile = result;
+                        }
+                        setState(() {});
                       },
                       child: const Text(
                         'Choose File',
@@ -184,7 +199,25 @@ class _UploadAudioState extends State<UploadAudio> {
                 height: 20,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () async {
+                  if (selectedFile == null) return;
+
+                  final courseResource = CourseResource(
+                      title: resourceTitle,
+                      courseId: selectedCourse,
+                      dateUploaded: DateTime.now(),
+                      fileUrl: '',
+                      fileType: 'audio');
+
+                  final updateResource = await courseRepo.uploadCourseResource(
+                      courseResource, selectedFile!);
+
+                  if (updateResource != null) {
+                    //CLOSE THE PAGE AFTER UPLOAD IS DONE
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context, updateResource);
+                  }
+                },
                 height: 50,
                 color: AppColor.primaryColor,
                 child: const Row(

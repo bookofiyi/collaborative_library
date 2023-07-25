@@ -16,7 +16,7 @@ class UploadDoc extends StatefulWidget {
 class _UploadDocState extends State<UploadDoc> {
   final courseRepo = CourseRepository();
 
-  String selectedValue = 'CSC201';
+  String selectedCourse = 'CSC201';
 
   PlatformFile? selectedFile;
   String resourceTitle = '';
@@ -132,7 +132,7 @@ class _UploadDocState extends State<UploadDoc> {
                       child: Text(value),
                     );
                   }).toList(),
-                  value: selectedValue,
+                  value: selectedCourse,
                   decoration: InputDecoration(
                     isDense: true,
                     fillColor: Colors.grey[500]!.withOpacity(0.2),
@@ -159,7 +159,7 @@ class _UploadDocState extends State<UploadDoc> {
                   onChanged: (value) {
                     if (value == null) return;
                     setState(() {
-                      selectedValue = value;
+                      selectedCourse = value;
                     });
                   }),
               const SizedBox(
@@ -181,7 +181,8 @@ class _UploadDocState extends State<UploadDoc> {
                     const Icon(Icons.document_scanner_rounded),
                     TextButton(
                       onPressed: () async {
-                        final result = await GetDeviceFiles.pickFile();
+                        final result = await GetDeviceFiles.pickFile(
+                            fileType: FileType.custom);
                         if (result != null) {
                           selectedFile = result;
                         }
@@ -208,15 +209,17 @@ class _UploadDocState extends State<UploadDoc> {
 
                   final courseResource = CourseResource(
                       title: resourceTitle,
-                      courseId: selectedValue,
+                      courseId: selectedCourse,
                       dateUploaded: DateTime.now(),
-                      fileUrl: '');
+                      fileUrl: '',
+                      fileType: 'doc');
 
                   final updateResource = await courseRepo.uploadCourseResource(
                       courseResource, selectedFile!);
 
                   if (updateResource != null) {
                     //CLOSE THE PAGE AFTER UPLOAD IS DONE
+                    // ignore: use_build_context_synchronously
                     Navigator.pop(context, updateResource);
                   }
                 },
