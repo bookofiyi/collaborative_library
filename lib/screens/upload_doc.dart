@@ -18,10 +18,8 @@ class _UploadDocState extends State<UploadDoc> {
 
   String selectedValue = 'CSC201';
 
-
   PlatformFile? selectedFile;
   String resourceTitle = '';
-
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +215,7 @@ class _UploadDocState extends State<UploadDoc> {
                   final updateResource = await courseRepo.uploadCourseResource(
                       courseResource, selectedFile!);
 
-                  if(updateResource != null) {
+                  if (updateResource != null) {
                     //CLOSE THE PAGE AFTER UPLOAD IS DONE
                     Navigator.pop(context, updateResource);
                   }
