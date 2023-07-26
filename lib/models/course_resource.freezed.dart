@@ -26,6 +26,7 @@ mixin _$CourseResource {
   DateTime get dateUploaded => throw _privateConstructorUsedError;
   String get fileUrl => throw _privateConstructorUsedError;
   String get fileType => throw _privateConstructorUsedError;
+  String get uploadedBy => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,8 @@ abstract class $CourseResourceCopyWith<$Res> {
       String courseId,
       DateTime dateUploaded,
       String fileUrl,
-      String fileType});
+      String fileType,
+      String uploadedBy});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$CourseResourceCopyWithImpl<$Res, $Val extends CourseResource>
     Object? dateUploaded = null,
     Object? fileUrl = null,
     Object? fileType = null,
+    Object? uploadedBy = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -93,6 +96,10 @@ class _$CourseResourceCopyWithImpl<$Res, $Val extends CourseResource>
           ? _value.fileType
           : fileType // ignore: cast_nullable_to_non_nullable
               as String,
+      uploadedBy: null == uploadedBy
+          ? _value.uploadedBy
+          : uploadedBy // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -111,7 +118,8 @@ abstract class _$$_CourseResourceCopyWith<$Res>
       String courseId,
       DateTime dateUploaded,
       String fileUrl,
-      String fileType});
+      String fileType,
+      String uploadedBy});
 }
 
 /// @nodoc
@@ -131,6 +139,7 @@ class __$$_CourseResourceCopyWithImpl<$Res>
     Object? dateUploaded = null,
     Object? fileUrl = null,
     Object? fileType = null,
+    Object? uploadedBy = null,
   }) {
     return _then(_$_CourseResource(
       id: freezed == id
@@ -157,6 +166,10 @@ class __$$_CourseResourceCopyWithImpl<$Res>
           ? _value.fileType
           : fileType // ignore: cast_nullable_to_non_nullable
               as String,
+      uploadedBy: null == uploadedBy
+          ? _value.uploadedBy
+          : uploadedBy // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +183,8 @@ class _$_CourseResource implements _CourseResource {
       required this.courseId,
       required this.dateUploaded,
       required this.fileUrl,
-      required this.fileType});
+      required this.fileType,
+      this.uploadedBy = 'Someone'});
 
   factory _$_CourseResource.fromJson(Map<String, dynamic> json) =>
       _$$_CourseResourceFromJson(json);
@@ -187,10 +201,13 @@ class _$_CourseResource implements _CourseResource {
   final String fileUrl;
   @override
   final String fileType;
+  @override
+  @JsonKey()
+  final String uploadedBy;
 
   @override
   String toString() {
-    return 'CourseResource(id: $id, title: $title, courseId: $courseId, dateUploaded: $dateUploaded, fileUrl: $fileUrl, fileType: $fileType)';
+    return 'CourseResource(id: $id, title: $title, courseId: $courseId, dateUploaded: $dateUploaded, fileUrl: $fileUrl, fileType: $fileType, uploadedBy: $uploadedBy)';
   }
 
   @override
@@ -206,13 +223,15 @@ class _$_CourseResource implements _CourseResource {
                 other.dateUploaded == dateUploaded) &&
             (identical(other.fileUrl, fileUrl) || other.fileUrl == fileUrl) &&
             (identical(other.fileType, fileType) ||
-                other.fileType == fileType));
+                other.fileType == fileType) &&
+            (identical(other.uploadedBy, uploadedBy) ||
+                other.uploadedBy == uploadedBy));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, courseId, dateUploaded, fileUrl, fileType);
+  int get hashCode => Object.hash(runtimeType, id, title, courseId,
+      dateUploaded, fileUrl, fileType, uploadedBy);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +254,8 @@ abstract class _CourseResource implements CourseResource {
       required final String courseId,
       required final DateTime dateUploaded,
       required final String fileUrl,
-      required final String fileType}) = _$_CourseResource;
+      required final String fileType,
+      final String uploadedBy}) = _$_CourseResource;
 
   factory _CourseResource.fromJson(Map<String, dynamic> json) =
       _$_CourseResource.fromJson;
@@ -252,6 +272,8 @@ abstract class _CourseResource implements CourseResource {
   String get fileUrl;
   @override
   String get fileType;
+  @override
+  String get uploadedBy;
   @override
   @JsonKey(ignore: true)
   _$$_CourseResourceCopyWith<_$_CourseResource> get copyWith =>

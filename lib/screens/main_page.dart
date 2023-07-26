@@ -375,11 +375,11 @@ class _MainPageState extends State<MainPage> {
                         children: List.generate(6, (index) {
                           return GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ResourceDetailsPage()));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>
+                              //             const ResourceDetailsPage()));
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(right: 16.0),

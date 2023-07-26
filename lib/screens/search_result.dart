@@ -58,10 +58,10 @@ class _SearchResultsState extends State<SearchResults> {
               children: List.generate(25, (index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ResourceDetailsPage()));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const ResourceDetailsPage()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

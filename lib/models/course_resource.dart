@@ -12,6 +12,7 @@ class CourseResource with _$CourseResource {
     required DateTime dateUploaded,
     required String fileUrl,
     required String fileType,
+    @Default('Someone') String uploadedBy,
   }) = _CourseResource;
 
   factory CourseResource.fromJson(Map<String, Object?> json) =>

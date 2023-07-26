@@ -14,6 +14,7 @@ _$_CourseResource _$$_CourseResourceFromJson(Map<String, dynamic> json) =>
       dateUploaded: DateTime.parse(json['dateUploaded'] as String),
       fileUrl: json['fileUrl'] as String,
       fileType: json['fileType'] as String,
+      uploadedBy: json['uploadedBy'] as String? ?? 'Someone',
     );
 
 Map<String, dynamic> _$$_CourseResourceToJson(_$_CourseResource instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_CourseResourceToJson(_$_CourseResource instance) =>
       'dateUploaded': instance.dateUploaded.toIso8601String(),
       'fileUrl': instance.fileUrl,
       'fileType': instance.fileType,
+      'uploadedBy': instance.uploadedBy,
     };
