@@ -228,7 +228,8 @@ class _SignInState extends State<SignIn> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           customDescriptionText(
-                            "Forgot password ?",
+                            "Forgot password?",
+                            spacing: 0,
                             onTap: () {
                               // Get.to(() => const ForgetPassword());
                             },
