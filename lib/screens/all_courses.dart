@@ -27,6 +27,7 @@ class _AllCoursesState extends State<AllCourses> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
+          //
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -48,13 +49,15 @@ class _AllCoursesState extends State<AllCourses> {
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
+
+          //
           GestureDetector(
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'CSC202',
+                            courseCode: 'MEE203',
                           ))));
             },
             child: const ListTile(
@@ -69,24 +72,181 @@ class _AllCoursesState extends State<AllCourses> {
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
+
+          //
           GestureDetector(
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'CSC202',
+                            courseCode: 'MEE203',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'CSC202',
+                'MEE203',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Computer Programming II'),
+              subtitle: Text('Engineering Drawing I'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+
+          //
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'MEE204',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'MEE204',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Engineering Drawing II'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+          //
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'ECN201',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'ECN201',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Principles of Economics I'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+          //
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'ECN202',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'ECN202',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Principles of Economics II'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+          //
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'CPE203',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'CPE203',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Introduction to Digital Computer System I'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+          //
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'CPE204',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'CPE204',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Introduction to Digital Computer System II'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+          //
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'MTH205',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'MTH205',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Introduction to Algebra'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+            ),
+          ),
+          //
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const AllResources(
+                            courseCode: 'MTH306',
+                          ))));
+            },
+            child: const ListTile(
+              title: Text(
+                'MTH306',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: Text('Groups and Rings'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),

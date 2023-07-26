@@ -86,7 +86,7 @@ class _SearchResultsState extends State<SearchResults> {
                           ),
                         ],
                       ),
-                      color: const Color(0xFFF8FAFC),
+                      color: const Color(0xFFF0F4FD),
                     ),
                   ),
                 );

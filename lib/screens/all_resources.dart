@@ -61,8 +61,15 @@ class _AllResourcesState extends State<AllResources> {
                       width: MediaQuery.of(context).size.width * 2.5,
                       heightImage: 100,
                       // height: 300,
-                      tags: [customTag(courseName: 'CSC201')],
-                      title: const Text('Intro to CSC201'),
+                      tags: [
+                        customTag(
+                            courseName: widget.courseCode.isEmpty
+                                ? 'CSC201'
+                                : widget.courseCode)
+                      ],
+                      title: widget.courseCode.isEmpty
+                          ? const Text('Intro to CSC201')
+                          : Text('Intro to ${widget.courseCode}'),
                       description: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -76,7 +83,7 @@ class _AllResourcesState extends State<AllResources> {
                           ),
                         ],
                       ),
-                      color: const Color(0xFFF8FAFC),
+                      color: const Color(0xFFF0F4FD),
                     ),
                   ),
                 );

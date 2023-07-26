@@ -1,3 +1,4 @@
+import 'package:collab_library/account_access/sign_up.dart';
 import 'package:collab_library/constants.dart';
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
@@ -23,7 +24,7 @@ class _SignInState extends State<SignIn> {
   final _passwordController = TextEditingController();
   bool isHiddenPassword = true;
 
-  Future signIn() async {
+  Future logIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
@@ -243,17 +244,7 @@ class _SignInState extends State<SignIn> {
                   height: 40,
                 ),
                 InkWell(
-                  onTap: () {
-                    // if (LoginScreen._formKey.currentState!.validate()) {
-                    //   if (controller.status != Status.isLoading) {
-                    //     controller.logIn(
-                    //       email: loginemailController.text.trim(),
-                    //       password: loginpasswordController.text.trim(),
-                    //     );
-                    //   }
-                    // }
-                    // Get.to(() => UserNavScreen());
-                  },
+                  onTap: logIn,
                   child: Container(
                     height: 50,
                     decoration: BoxDecoration(
@@ -311,7 +302,10 @@ class _SignInState extends State<SignIn> {
                       customDescriptionText(
                         "Sign up",
                         onTap: () {
-                          // Get.offAll(() => const SignUpScreen());
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()));
                         },
                         textAlign: TextAlign.center,
                         colors: AppColor.primaryColor,

@@ -193,7 +193,7 @@ class _MainPageState extends State<MainPage> {
                       },
                       decoration: InputDecoration(
                         isDense: true,
-                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        fillColor: const Color(0xFFF0F4FD),
                         filled: true,
                         focusColor: AppColor.primaryColor,
                         enabledBorder: OutlineInputBorder(
@@ -408,7 +408,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                   ],
                                 ),
-                                color: const Color(0xFFF8FAFC),
+                                color: const Color(0xFFF0F4FD),
                               ),
                             ),
                           );
@@ -446,7 +446,7 @@ class _MainPageState extends State<MainPage> {
                     Container(
                       width: double.infinity,
                       height: 350,
-                      color: const Color(0xFFE2E8F0),
+                      color: const Color(0xFFF0F4FD),
                       child: const Center(
                         child: Text(
                           'You have no downloads yet.',
