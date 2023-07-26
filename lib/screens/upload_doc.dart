@@ -17,6 +17,7 @@ class _UploadDocState extends State<UploadDoc> {
   final courseRepo = CourseRepository();
 
   String selectedCourse = 'CSC201';
+  bool fileLoaded = false;
 
   PlatformFile? selectedFile;
   String resourceTitle = '';
@@ -179,24 +180,29 @@ class _UploadDocState extends State<UploadDoc> {
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Icon(Icons.document_scanner_rounded),
-                    TextButton(
-                      onPressed: () async {
-                        final result = await GetDeviceFiles.pickFile(
-                            fileType: FileType.custom);
-                        if (result != null) {
-                          selectedFile = result;
-                        }
-                        setState(() {});
-                      },
-                      child: const Text(
-                        'Choose File',
-                        style: TextStyle(
-                          fontSize: 16,
-                          // fontWeight: FontWeight.bold,
+                    if (!fileLoaded)
+                      TextButton(
+                        onPressed: () async {
+                          final result = await GetDeviceFiles.pickFile(
+                              fileType: FileType.any);
+                          if (result != null) {
+                            selectedFile = result;
+                          }
+                          setState(() {
+                            fileLoaded = true;
+                          });
+                        },
+                        child: const Text(
+                          'Choose File',
+                          style: TextStyle(
+                            fontSize: 16,
+                            // fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    const Text('Document should not be larger than 100MB')
+                    if (fileLoaded) const Text('File Loaded'),
+                    if (!fileLoaded)
+                      const Text('Document should not be larger than 100MB')
                   ],
                 ),
               ),

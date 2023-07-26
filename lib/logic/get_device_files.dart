@@ -18,6 +18,7 @@ class GetDeviceFiles {
 
       return null;
     } catch (e) {
+      // ignore: avoid_print
       print(e);
       return null;
     }

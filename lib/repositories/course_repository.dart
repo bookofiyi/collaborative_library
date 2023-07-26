@@ -21,6 +21,7 @@ class CourseRepository {
           '$courseCollection/${courseResource.courseId}/$fileName';
       final response = await _storage.ref(destination).putData(fileBytes);
 
+      // ignore: avoid_print
       print(response);
 
       final downloadUrl = await response.ref.getDownloadURL();
@@ -35,6 +36,7 @@ class CourseRepository {
       final finalResource = createdResource.copyWith(id: doc.id);
       return finalResource;
     } catch (e) {
+      // ignore: avoid_print
       print(e);
       return null;
     }
