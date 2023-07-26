@@ -22,6 +22,22 @@ class _UploadDocState extends State<UploadDoc> {
   PlatformFile? selectedFile;
   String resourceTitle = '';
 
+  void showInSnackBar(context, String value) {
+    final snackBar = SnackBar(
+      content: Text(value),
+      backgroundColor: AppColor.primaryColor,
+      behavior: SnackBarBehavior.floating,
+      action: SnackBarAction(
+        label: 'DISMISS',
+        textColor: AppColor.kwhiteColor,
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -224,6 +240,9 @@ class _UploadDocState extends State<UploadDoc> {
                       courseResource, selectedFile!);
 
                   if (updateResource != null) {
+                    // ignore: use_build_context_synchronously
+                    showInSnackBar(context, 'Upload Successful!');
+                    // await displayDialog(context);
                     //CLOSE THE PAGE AFTER UPLOAD IS DONE
                     // ignore: use_build_context_synchronously
                     Navigator.pop(context, updateResource);

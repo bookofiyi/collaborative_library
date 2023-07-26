@@ -1,15 +1,17 @@
-import 'package:collab_library/account_access/sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
 import 'package:collab_library/logic/size_config.dart';
 import 'package:collab_library/widget/customWidgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gap/gap.dart';
 
 class SignUp extends StatefulWidget {
+  final VoidCallback showLoginPage;
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  const SignUp({super.key});
+  const SignUp({super.key, required this.showLoginPage});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -23,6 +25,62 @@ class _SignUpState extends State<SignUp> {
 
   bool isHiddenPassword = true;
   String message = '';
+
+  @override
+  void dispose() {
+    fNameController.dispose();
+    lNameController.dispose();
+    signupemailController.dispose();
+    signupPasswordController.dispose();
+    super.dispose();
+  }
+
+  Future signUp() async {
+    // create user
+    if (checkEmail()) {
+      FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: signupemailController.text.trim(),
+        password: signupPasswordController.text.trim(),
+      );
+
+      // add user details
+      addUserDetails(fNameController.text.trim(), lNameController.text.trim(),
+          signupemailController.text.trim());
+    }
+  }
+
+  Future addUserDetails(String firstName, String lastName, String email) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first name': firstName,
+      'last name': lastName,
+      'email': email,
+    });
+  }
+
+  bool checkEmail() {
+    if (signupemailController.text.trim().endsWith('@student.oauife.edu.ng')) {
+      return true;
+    } else {
+      showInSnackBar(context, 'Please use your school email to register.');
+      return false;
+    }
+  }
+
+  void showInSnackBar(context, String value) {
+    final snackBar = SnackBar(
+      content: Text(value),
+      backgroundColor: AppColor.primaryColor,
+      behavior: SnackBarBehavior.floating,
+      action: SnackBarAction(
+        label: 'DISMISS',
+        textColor: AppColor.kwhiteColor,
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -276,10 +334,10 @@ class _SignUpState extends State<SignUp> {
                         if (value!.isEmpty) {
                           return 'Enter a valid Email Address';
                         }
-                        // using regular expression
-                        if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                          return "Please enter a valid email address";
-                        }
+                        // // using regular expression
+                        // if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                        //   return "Please enter a valid email address";
+                        // }
 
                         // using the school email
                         if (!value.endsWith('@student.oauife.edu.ng')) {
@@ -365,19 +423,7 @@ class _SignUpState extends State<SignUp> {
                       height: 40,
                     ),
                     InkWell(
-                      onTap: () {
-                        // if (SignUpScreen._formKey.currentState!.validate()) {
-                        //   if (controller.status != Status.isLoading) {
-                        //     controller.signUp(
-                        //       email: signupemailController.text.trim(),
-                        //       firstname: fNameController.text.trim(),
-                        //       lastname: lNameController.text.trim(),
-                        //       username: signupusernameController.text.trim(),
-                        //       password: signupPasswordController.text.trim(),
-                        //     );
-                        //   }
-                        // }
-                      },
+                      onTap: signUp,
                       child: Container(
                         height: 50,
                         decoration: BoxDecoration(
@@ -434,17 +480,24 @@ class _SignUpState extends State<SignUp> {
                           const SizedBox(
                             width: 5,
                           ),
-                          customDescriptionText(
-                            "Sign in",
-                            textAlign: TextAlign.center,
-                            colors: AppColor.primaryColor,
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const SignIn()));
-                            },
+
+                          GestureDetector(
+                            onTap: widget.showLoginPage,
+                            child: const Text(
+                              'Sign In',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: AppColor.primaryColor,
+                              ),
+                            ),
                           ),
+
+                          // customDescriptionText(
+                          //   "Sign in",
+                          //   textAlign: TextAlign.center,
+                          //   colors: AppColor.primaryColor,
+                          //   onTap: widget.showLoginPage,
+                          // ),
                           const SizedBox(
                             height: 40,
                           ),

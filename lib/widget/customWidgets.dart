@@ -7,6 +7,41 @@ import 'package:collab_library/utils/loading_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+Widget displayDialog(BuildContext context) {
+  return Dialog(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Container(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.check_circle,
+            color: Colors.green,
+            size: 48,
+          ),
+          const SizedBox(height: 16),
+          const Text(
+            'Upload Successful!',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
+          const Text('Your file has been uploaded successfully.'),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context); // Close the dialog when button is pressed
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 Widget customTag({required String courseName}) {
   return Container(
     decoration: BoxDecoration(

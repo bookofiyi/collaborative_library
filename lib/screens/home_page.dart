@@ -7,6 +7,7 @@ import 'package:collab_library/screens/upload_doc.dart';
 import 'package:collab_library/screens/upload_video.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 BuildContext? testContext;
 
@@ -18,6 +19,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final user = FirebaseAuth.instance.currentUser;
+
   late PersistentTabController _controller;
   late bool _hideNavBar;
 

@@ -1,4 +1,4 @@
-import 'package:collab_library/account_access/sign_in.dart';
+import 'package:collab_library/account_access/auth_page.dart';
 import 'package:collab_library/screens/home_page.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
@@ -16,7 +16,7 @@ class CheckUser extends StatelessWidget {
             if (snapshot.hasData) {
               return const HomePage();
             } else {
-              return const SignIn();
+              return const AuthPage();
             }
           })),
     );

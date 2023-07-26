@@ -1,4 +1,3 @@
-import 'package:collab_library/account_access/sign_up.dart';
 import 'package:collab_library/constants.dart';
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
@@ -10,8 +9,9 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class SignIn extends StatefulWidget {
+  final VoidCallback showRegisterPage;
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  const SignIn({super.key});
+  const SignIn({super.key, required this.showRegisterPage});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -300,17 +300,23 @@ class _SignInState extends State<SignIn> {
                       const SizedBox(
                         width: 5,
                       ),
-                      customDescriptionText(
-                        "Sign up",
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUp()));
-                        },
-                        textAlign: TextAlign.center,
-                        colors: AppColor.primaryColor,
+
+                      GestureDetector(
+                        onTap: widget.showRegisterPage,
+                        child: const Text(
+                          'Sign Up',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: AppColor.primaryColor,
+                          ),
+                        ),
                       ),
+                      // customDescriptionText(
+                      //   "Sign up",
+                      //   onTap: widget.showRegisterPage,
+                      //   textAlign: TextAlign.center,
+                      //   colors: AppColor.primaryColor,
+                      // ),
                       const SizedBox(
                         height: 40,
                       )

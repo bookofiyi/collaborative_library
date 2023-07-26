@@ -1,6 +1,9 @@
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage(
@@ -15,6 +18,25 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final user = FirebaseAuth.instance.currentUser;
+
+  List<String> docIDs = [];
+
+  Future getDocId() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .get()
+        .then((snapshot) => snapshot.docs.forEach((element) {
+              print(element.reference);
+            }));
+  }
+
+  @override
+  void initState() {
+    getDocId();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -151,7 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 keyboardType: TextInputType.name,
                 textInputAction: TextInputAction.done,
                 enabled: false,
-                initialValue: 'ieadedeji@student.oauife.edu.ng',
+                initialValue: user!.email,
                 decoration: InputDecoration(
                   suffixIcon: const Icon(
                     Icons.email,
@@ -191,6 +213,19 @@ class _ProfilePageState extends State<ProfilePage> {
                           fontFamily: FontFamily.sfRegular,
                           fontSize: 14),
                 ),
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            MaterialButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              color: AppColor.errorColors,
+              child: const Text(
+                'LOGOUT',
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
