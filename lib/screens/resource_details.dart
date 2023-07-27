@@ -52,7 +52,7 @@ class _ResourceDetailsPageState extends State<ResourceDetailsPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
-                child: customTag(courseName: 'CSC201'),
+                child: customTag(courseName: widget.courseResource.courseId),
               ),
               const SizedBox(
                 height: 10,
