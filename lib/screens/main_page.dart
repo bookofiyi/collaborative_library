@@ -104,7 +104,7 @@ class _MainPageState extends State<MainPage> {
         leading: const Padding(
           padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
           child: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/pic.jpg'),
+            backgroundImage: AssetImage('assets/images/pic.png'),
             radius: 10,
           ),
         ),
