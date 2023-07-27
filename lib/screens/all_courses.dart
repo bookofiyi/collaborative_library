@@ -34,18 +34,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'CSC201',
+                            courseCode: 'TPD502',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'CSC201',
+                'TPD502',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Computer Programming I'),
+              subtitle: Text('Science, Technology and Innovation'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -57,18 +57,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'MEE203',
+                            courseCode: 'CPE502',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'CSC202',
+                'CPE502',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Computer Programming II'),
+              subtitle: Text('Hardware Systems Studies'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -80,18 +80,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'MEE203',
+                            courseCode: 'CPE506',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'MEE203',
+                'CPE506',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Engineering Drawing I'),
+              subtitle: Text('Industrial Application Studies'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -103,18 +103,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'MEE204',
+                            courseCode: 'CPE508',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'MEE204',
+                'CPE508',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Engineering Drawing II'),
+              subtitle: Text('Computer System Project Management'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -125,18 +125,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'ECN201',
+                            courseCode: 'CPE510',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'ECN201',
+                'CPE510',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Principles of Economics I'),
+              subtitle: Text('Natural Language Processing and Applications'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -147,18 +147,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'ECN202',
+                            courseCode: 'CSC514',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'ECN202',
+                'CSC514',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Principles of Economics II'),
+              subtitle: Text('Computer Graphics'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -169,18 +169,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'CPE203',
+                            courseCode: 'CSC524',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'CPE203',
+                'CSC524',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Introduction to Digital Computer System I'),
+              subtitle: Text('Techniques in Data Analysis'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -213,18 +213,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'MTH205',
+                            courseCode: 'CSC522',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'MTH205',
+                'CSC522',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Introduction to Algebra'),
+              subtitle: Text('Information Storage and Retrieval Systems'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
@@ -235,18 +235,18 @@ class _AllCoursesState extends State<AllCourses> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const AllResources(
-                            courseCode: 'MTH306',
+                            courseCode: 'CPE520',
                           ))));
             },
             child: const ListTile(
               title: Text(
-                'MTH306',
+                'CPE520',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
-              subtitle: Text('Groups and Rings'),
+              subtitle: Text('Expert Systems'),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:collab_library/logic/colors.dart';
-import 'package:collab_library/screens/resource_details.dart';
+// import 'package:collab_library/screens/resource_details.dart';
 import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_card/image_card.dart';

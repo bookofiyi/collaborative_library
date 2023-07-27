@@ -2,7 +2,8 @@ import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/logic/font_family.dart';
 import 'package:collab_library/screens/all_courses.dart';
 import 'package:collab_library/screens/all_resources.dart';
-import 'package:collab_library/screens/resource_details.dart';
+// import 'package:collab_library/screens/resource_details.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:collab_library/screens/search_result.dart';
 import 'package:collab_library/widget/customWidgets.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final user = FirebaseAuth.instance.currentUser;
   final TextEditingController _searchFieldController = TextEditingController();
   bool _showClearIcon = false;
 
@@ -102,56 +104,56 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         title: const Text('Hello, Iyiola'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0, right: 8.0, bottom: 4.0),
-            child: SizedBox(
-              width: 90,
-              child: DropdownButtonFormField(
-                  items: <String>[
-                    'Part 1',
-                    'Part 2',
-                    'Part 3',
-                    'Part 4',
-                    'Part 5'
-                  ].map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  value: selectedValue,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    fillColor: Colors.grey[500]!.withOpacity(0.2),
-                    filled: true,
-                    focusColor: AppColor.primaryColor,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        15,
-                      ),
-                      borderSide: const BorderSide(
-                        color: AppColor.primaryColor,
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    setState(() {
-                      selectedValue = value;
-                    });
-                  }),
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.only(top: 4.0, right: 8.0, bottom: 4.0),
+        //     child: SizedBox(
+        //       width: 90,
+        //       child: DropdownButtonFormField(
+        //           items: <String>[
+        //             'Part 1',
+        //             'Part 2',
+        //             'Part 3',
+        //             'Part 4',
+        //             'Part 5'
+        //           ].map<DropdownMenuItem<String>>((String value) {
+        //             return DropdownMenuItem<String>(
+        //               value: value,
+        //               child: Text(value),
+        //             );
+        //           }).toList(),
+        //           value: selectedValue,
+        //           decoration: InputDecoration(
+        //             isDense: true,
+        //             fillColor: Colors.grey[500]!.withOpacity(0.2),
+        //             filled: true,
+        //             focusColor: AppColor.primaryColor,
+        //             enabledBorder: OutlineInputBorder(
+        //               borderRadius: BorderRadius.circular(10),
+        //               borderSide: BorderSide.none,
+        //             ),
+        //             focusedBorder: OutlineInputBorder(
+        //               borderRadius: BorderRadius.circular(10),
+        //               borderSide: BorderSide.none,
+        //             ),
+        //             border: OutlineInputBorder(
+        //               borderRadius: BorderRadius.circular(
+        //                 15,
+        //               ),
+        //               borderSide: const BorderSide(
+        //                 color: AppColor.primaryColor,
+        //                 width: 1,
+        //               ),
+        //             ),
+        //           ),
+        //           onChanged: (value) {
+        //             setState(() {
+        //               selectedValue = value;
+        //             });
+        //           }),
+        //     ),
+        //   ),
+        // ],
       ),
       body: Column(
         children: [
@@ -275,33 +277,151 @@ class _MainPageState extends State<MainPage> {
                       height: 110,
                       child: GridView.count(
                         scrollDirection: Axis.horizontal,
-                        // shrinkWrap: true,
                         crossAxisCount: 1,
-                        children: List.generate(5, (index) {
-                          return GestureDetector(
+                        // shrinkWrap: true,
+
+                        children: [
+                          GestureDetector(
                             onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: ((context) => const AllResources(
-                                            courseCode: 'CSC201',
-                                          ))));
+                                          courseCode: 'TPD502'))));
                             },
                             child: const ListTile(
-                              visualDensity: VisualDensity.compact,
-                              dense: true,
                               title: Text(
-                                'CSC201',
+                                'TPD502',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                               ),
-                              // subtitle: Text('Computer Programming I'),
+                              // subtitle:
+                              //     Text('Science, Technology and Innovation'),
                               trailing: Icon(Icons.arrow_forward_ios_rounded),
                             ),
-                          );
-                        }),
+                          ),
+
+                          //
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => const AllResources(
+                                            courseCode: 'CPE502',
+                                          ))));
+                            },
+                            child: const ListTile(
+                              title: Text(
+                                'CPE502',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              // subtitle: Text('Hardware Systems Studies'),
+                              trailing: Icon(Icons.arrow_forward_ios_rounded),
+                            ),
+                          ),
+
+                          //
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => const AllResources(
+                                            courseCode: 'CPE506',
+                                          ))));
+                            },
+                            child: const ListTile(
+                              title: Text(
+                                'CPE506',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              // subtitle: Text('Industrial Application Studies'),
+                              trailing: Icon(Icons.arrow_forward_ios_rounded),
+                            ),
+                          ),
+
+                          //
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => const AllResources(
+                                            courseCode: 'CPE508',
+                                          ))));
+                            },
+                            child: const ListTile(
+                              title: Text(
+                                'CPE508',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              // subtitle:
+                              //     Text('Computer System Project Management'),
+                              trailing: Icon(Icons.arrow_forward_ios_rounded),
+                            ),
+                          ),
+
+                          //
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => const AllResources(
+                                            courseCode: 'CPE510',
+                                          ))));
+                            },
+                            child: const ListTile(
+                              title: Text(
+                                'CPE510',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              // subtitle: Text(
+                              //     'Natural Language Processing and Applications'),
+                              trailing: Icon(Icons.arrow_forward_ios_rounded),
+                            ),
+                          ),
+                        ],
+                        // children: List.generate(5, (index) {
+                        //   return GestureDetector(
+                        //     onTap: () {
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: ((context) => const AllResources(
+                        //                     courseCode: 'CSC201',
+                        //                   ))));
+                        //     },
+                        //     child: const ListTile(
+                        //       visualDensity: VisualDensity.compact,
+                        //       dense: true,
+                        //       title: Text(
+                        //         'CSC201',
+                        //         style: TextStyle(
+                        //           fontWeight: FontWeight.bold,
+                        //           fontSize: 18,
+                        //         ),
+                        //       ),
+                        //       // subtitle: Text('Computer Programming I'),
+                        //       trailing: Icon(Icons.arrow_forward_ios_rounded),
+                        //     ),
+                        //   );
+                        // }),
                       ),
                     ),
                     // Row(

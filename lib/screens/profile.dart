@@ -21,6 +21,22 @@ class _ProfilePageState extends State<ProfilePage> {
   final user = FirebaseAuth.instance.currentUser;
 
   List<String> docIDs = [];
+  String firstName = '';
+  String lastName = '';
+
+  // Future getUserData() async {
+  //   await FirebaseFirestore.instance
+  //       .collection('users')
+  //       .where('email', isEqualTo: user?.email)
+  //       .get()
+  //       .then((snapshot) => snapshot.docs.forEach((element) {
+  //             print(element.reference);
+  //             docIDs.add(element.reference.id);
+
+  //             firstName = element.data
+  //             print(docIDs);
+  //           }));
+  // }
 
   Future getDocId() async {
     await FirebaseFirestore.instance
@@ -34,6 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     getDocId();
+    // getUserData();
     super.initState();
   }
 

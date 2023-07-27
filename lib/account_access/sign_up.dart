@@ -22,6 +22,7 @@ class _SignUpState extends State<SignUp> {
   final lNameController = TextEditingController();
   final signupemailController = TextEditingController();
   final signupPasswordController = TextEditingController();
+  final matricNumberController = TextEditingController();
 
   bool isHiddenPassword = true;
   String message = '';
@@ -32,6 +33,7 @@ class _SignUpState extends State<SignUp> {
     lNameController.dispose();
     signupemailController.dispose();
     signupPasswordController.dispose();
+    matricNumberController.dispose();
     super.dispose();
   }
 
@@ -44,16 +46,21 @@ class _SignUpState extends State<SignUp> {
       );
 
       // add user details
-      addUserDetails(fNameController.text.trim(), lNameController.text.trim(),
-          signupemailController.text.trim());
+      addUserDetails(
+          fNameController.text.trim(),
+          lNameController.text.trim(),
+          signupemailController.text.trim(),
+          matricNumberController.text.trim());
     }
   }
 
-  Future addUserDetails(String firstName, String lastName, String email) async {
+  Future addUserDetails(String firstName, String lastName, String email,
+      String matricNumber) async {
     await FirebaseFirestore.instance.collection('users').add({
       'first name': firstName,
       'last name': lastName,
       'email': email,
+      'matric number': matricNumber,
     });
   }
 
@@ -227,56 +234,56 @@ class _SignUpState extends State<SignUp> {
                       },
                     ),
                     const Gap(15),
-                    // TextFormField(
-                    //   cursorColor: AppColor.primaryColor,
-                    //   controller: signupusernameController,
-                    //   keyboardType: TextInputType.name,
-                    //   textInputAction: TextInputAction.done,
-                    //   decoration: InputDecoration(
-                    //     isDense: true,
-                    //     fillColor: Colors.grey[500]!.withOpacity(0.2),
-                    //     filled: true,
-                    //     focusColor: AppColor.primaryColor,
-                    //     enabledBorder: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(10),
-                    //       borderSide: BorderSide.none,
-                    //     ),
-                    //     focusedBorder: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(10),
-                    //       borderSide: BorderSide.none,
-                    //     ),
-                    //     border: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(15),
-                    //       borderSide: const BorderSide(
-                    //         color: AppColor.primaryColor,
-                    //         width: 1,
-                    //       ),
-                    //     ),
-                    //     labelText: 'Username',
-                    //     labelStyle: Theme.of(context)
-                    //         .textTheme
-                    //         .headlineMedium!
-                    //         .copyWith(
-                    //             color: AppColor.inputtextColor.withOpacity(0.4),
-                    //             fontFamily: FontFamily.sfRegular,
-                    //             fontSize: 14),
-                    //     hintText: 'Enter username',
-                    //     hintStyle: Theme.of(context)
-                    //         .textTheme
-                    //         .headlineMedium!
-                    //         .copyWith(
-                    //             color: AppColor.inputtextColor.withOpacity(0.4),
-                    //             fontFamily: FontFamily.sfRegular,
-                    //             fontSize: 14),
-                    //   ),
-                    //   validator: (String? value) {
-                    //     if (value!.isEmpty) {
-                    //       return 'Enter your username "6 Characters minimum"';
-                    //     }
-                    //     return null;
-                    //   },
-                    // ),
-                    // const Gap(15),
+                    TextFormField(
+                      cursorColor: AppColor.primaryColor,
+                      controller: matricNumberController,
+                      keyboardType: TextInputType.name,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        fillColor: Colors.grey[500]!.withOpacity(0.2),
+                        filled: true,
+                        focusColor: AppColor.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: AppColor.primaryColor,
+                            width: 1,
+                          ),
+                        ),
+                        labelText: 'Matric Number',
+                        labelStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                        hintText: 'Enter your matric number',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColor.inputtextColor.withOpacity(0.4),
+                                fontFamily: FontFamily.sfRegular,
+                                fontSize: 14),
+                      ),
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'Enter your matric number';
+                        }
+                        return null;
+                      },
+                    ),
+                    const Gap(15),
                     TextFormField(
                       cursorColor: AppColor.primaryColor,
                       autofocus: false,

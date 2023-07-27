@@ -1,11 +1,13 @@
 import 'dart:io';
+// import 'dart:js_interop';
 
 import 'package:collab_library/logic/colors.dart';
 import 'package:collab_library/models/course_resource.dart';
 import 'package:collab_library/widget/customWidgets.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_file/internet_file.dart';
+import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -77,9 +79,10 @@ class _ResourceDetailsPageState extends State<ResourceDetailsPage> {
                         fontSize: 12,
                       ),
                     ),
-                    const Text(
-                      '12th July 2023',
-                      style: TextStyle(
+                    Text(
+                      DateFormat('dd MMMM yyyy')
+                          .format(widget.courseResource.dateUploaded),
+                      style: const TextStyle(
                         fontSize: 12,
                       ),
                     ),
@@ -125,15 +128,15 @@ class _ResourceDetailsPageState extends State<ResourceDetailsPage> {
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.download_rounded,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      // Icon(
+                      //   Icons.download_rounded,
+                      //   color: Colors.white,
+                      // ),
+                      // SizedBox(
+                      //   width: 10,
+                      // ),
                       Text(
-                        'Download',
+                        'View',
                         style: TextStyle(
                           color: Colors.white,
                         ),
