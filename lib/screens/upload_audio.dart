@@ -16,7 +16,7 @@ class UploadAudio extends StatefulWidget {
 class _UploadAudioState extends State<UploadAudio> {
   final courseRepo = CourseRepository();
 
-  String selectedCourse = 'CSC201';
+  String selectedCourse = 'TPD502';
 
   PlatformFile? selectedFile;
   String resourceTitle = '';
@@ -111,16 +111,16 @@ class _UploadAudioState extends State<UploadAudio> {
               ),
               DropdownButtonFormField(
                   items: <String>[
-                    'CSC201',
-                    'CSC202',
-                    'MTH201',
-                    'MTH202',
-                    'MEE203',
-                    'MEE204',
-                    'MTH205',
-                    'MTH306',
-                    'CPE201',
-                    'CPE203'
+                    'TPD502',
+                    'CPE502',
+                    'CPE506',
+                    'CPE508',
+                    'CPE510',
+                    'CSC514',
+                    'CSC524',
+                    'CPE204',
+                    'CSC522',
+                    'CPE520'
                   ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
